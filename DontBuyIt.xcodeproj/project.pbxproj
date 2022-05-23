@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18AC686E283AB83000AC1B95 /* DontBuyItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC686D283AB83000AC1B95 /* DontBuyItApp.swift */; };
-		18AC6870283AB83000AC1B95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC686F283AB83000AC1B95 /* ContentView.swift */; };
+		18AC6870283AB83000AC1B95 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC686F283AB83000AC1B95 /* MainView.swift */; };
 		18AC6872283AB83200AC1B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18AC6871283AB83200AC1B95 /* Assets.xcassets */; };
 		18AC6875283AB83200AC1B95 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18AC6874283AB83200AC1B95 /* Preview Assets.xcassets */; };
 		18AC688A283AC68D00AC1B95 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18AC687E283AC68D00AC1B95 /* Roboto-LightItalic.ttf */; };
@@ -30,12 +30,13 @@
 		18AC68AD283ACEA100AC1B95 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68AC283ACEA100AC1B95 /* Strings.swift */; };
 		18AC68AF283ACEE400AC1B95 /* String+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68AE283ACEE400AC1B95 /* String+Convenience.swift */; };
 		18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68B0283ACF6C00AC1B95 /* Font+Custom.swift */; };
+		18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68B2283AD2E500AC1B95 /* AppButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		18AC686A283AB83000AC1B95 /* DontBuyIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontBuyIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18AC686D283AB83000AC1B95 /* DontBuyItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontBuyItApp.swift; sourceTree = "<group>"; };
-		18AC686F283AB83000AC1B95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		18AC686F283AB83000AC1B95 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		18AC6871283AB83200AC1B95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18AC6874283AB83200AC1B95 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		18AC687C283AC1BD00AC1B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +60,7 @@
 		18AC68AC283ACEA100AC1B95 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		18AC68AE283ACEE400AC1B95 /* String+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Convenience.swift"; sourceTree = "<group>"; };
 		18AC68B0283ACF6C00AC1B95 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
+		18AC68B2283AD2E500AC1B95 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +160,7 @@
 		18AC689A283ACAA100AC1B95 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				18AC686F283AB83000AC1B95 /* ContentView.swift */,
+				18AC686F283AB83000AC1B95 /* MainView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				18AC689C283ACAD300AC1B95 /* NavigationHeaderView.swift */,
+				18AC68B2283AD2E500AC1B95 /* AppButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -276,8 +279,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				18AC68AB283ACDBC00AC1B95 /* String+ImageNames.swift in Sources */,
-				18AC6870283AB83000AC1B95 /* ContentView.swift in Sources */,
+				18AC6870283AB83000AC1B95 /* MainView.swift in Sources */,
 				18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */,
+				18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */,
 				18AC689D283ACAD300AC1B95 /* NavigationHeaderView.swift in Sources */,
 				18AC686E283AB83000AC1B95 /* DontBuyItApp.swift in Sources */,
 				18AC68AD283ACEA100AC1B95 /* Strings.swift in Sources */,

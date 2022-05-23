@@ -16,5 +16,5 @@ extension String {
     static let smallRedInfoIcon = "small_red_info_icon"
     static let smallYellowInfoIcon = "small_yellow_info_icon"
     static let flagIcon = "ukrainian_flag_small_icon"
-    static let whiteInfoIcon = "white_info_icon"
+    static let infoIcon = "info_icon"
 }
