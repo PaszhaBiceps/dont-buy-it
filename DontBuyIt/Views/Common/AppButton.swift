@@ -8,41 +8,14 @@
 import SwiftUI
 
 struct AppButton: View {
-    enum ActiveColor {
-        case green
-        case red
-        case black
-        
-        var actualColor: Color {
-            switch self {
-            case .green:
-                return .appGreen
-            case .red:
-                return .appRed
-            case .black:
-                return .black
-            }
-        }
-        
-        var dotIconName: String {
-            switch self {
-            case .green:
-                return .greenDotIcon
-            case .red:
-                return .redDotIcon
-            case .black:
-                return .grayDotIcon
-            }
-        }
-    }
-    
     @Environment(\.colorScheme) var colorScheme
     
-    let action: () -> Void
-    let showDot: Bool
-    let activeColor: ActiveColor
-    let text: String
     @Binding var isActive: Bool
+    let showDot: Bool
+    let activeColor: Color
+    let text: String
+    let verticalPadding: CGFloat
+    let action: () -> Void
     
     private var backgroundColor: Color {
         colorScheme == .dark ? Color.appDarkGray : .white
@@ -52,34 +25,50 @@ struct AppButton: View {
         Button(action: action, label: {
             HStack {
                 if showDot {
-                    Image(
-                        isActive ? activeColor.dotIconName : .grayDotIcon
-                    )
+                    Circle()
+                        .fill(isActive ? activeColor : .appGray)
+                        .frame(width: 12, height: 12)
                 }
 
                 Text(text)
                     .font(.robotoBold(14))
-                    .foregroundColor(isActive ? activeColor.actualColor : .appGray)
+                    .foregroundColor(isActive ? activeColor : .appGray)
             }
-            .padding(12)
+            .padding(.vertical, verticalPadding)
+            .frame(maxWidth: .infinity)
         })
         .background(backgroundColor)
         .overlay(
             RoundedRectangle(cornerRadius: 20)
-                .stroke(isActive ? activeColor.actualColor : backgroundColor,
+                .stroke(isActive ? activeColor : backgroundColor,
                         lineWidth: 3)
         )
         .cornerRadius(20)
-        .shadow(color: isActive ? activeColor.actualColor.opacity(0.3) : .black.opacity(0.3), radius: 3)
+        .shadow(color: isActive ? activeColor.opacity(0.3) : .black.opacity(0.3), radius: 3)
+    }
+    
+    init(isActive: Binding<Bool>,
+         showDot: Bool = false,
+         activeColor: Color,
+         text: String,
+         verticalPadding: CGFloat = 12,
+         action: @escaping (() -> Void)) {
+        _isActive = isActive
+        self.showDot = showDot
+        self.activeColor = activeColor
+        self.text = text
+        self.verticalPadding = verticalPadding
+        self.action = action
     }
 }
 
 struct AppButton_Previews: PreviewProvider {
     static var previews: some View {
-        AppButton(action: {},
+        AppButton(isActive: .constant(false),
                   showDot: true,
-                  activeColor: .red,
+                  activeColor: .green,
                   text: "TEXT",
-                  isActive: .constant(true))
+                  action: {})
+            .padding(.horizontal, 12)
     }
 }
