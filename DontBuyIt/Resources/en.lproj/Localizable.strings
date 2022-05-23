@@ -6,7 +6,24 @@
   
 */
 
+// Nav Header View
 "navigation_header_part_one" = "Glory to";
 "navigation_header_part_two" = "Ukraine";
+
+// Main View
 "main_screen_left_button_title" = "Left";
 "main_screen_right_button_title" = "Stayed";
+
+// Notes view
+"notes_view_title" = "Notes";
+"temropary_suspended_title" = "Temporary suspended";
+"temporary_suspended_description" = "The company temporarily collapses all operations, leaving the opportunity to return.";
+"reduction_of_business_title" = "Reduction of business";
+"reduction_of_business_description" = "The company reduces some business operations while continuing others.";
+"suspension_of_investments_title" = "Suspension of investments";
+"suspension_of_investments_description" = "The company lays up future planned investments, development, marketing, continuing the main business.";
+"work_in_the_country_of_the_aggressor_title" = "Work in the country of the aggressor";
+"work_in_the_country_of_the_aggressor_description" = "The company ignores the requirements for output/reduction of activity.";
+"russian_brand_title" = "Russian Brand";
+"russian_brand_description" = "The brand that originates in the Agresor country.";
+"close_button_title" = "Close";

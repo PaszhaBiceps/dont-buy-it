@@ -90,7 +90,7 @@ struct MainView: View {
                         }
                     }
                 }.padding(.horizontal, 16)
-            }.frame(width: .infinity, height: 60)
+            }.frame(height: 60)
                 .padding(.top, 15)
                 
             Spacer()

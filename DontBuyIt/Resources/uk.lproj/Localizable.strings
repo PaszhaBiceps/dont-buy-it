@@ -6,7 +6,24 @@
   
 */
 
+// Nav Header View
 "navigation_header_part_one" = "Слава";
 "navigation_header_part_two" = "Україні";
+
+// Main View
 "main_screen_left_button_title" = "Пішли";
 "main_screen_right_button_title" = "Залишилися";
+
+// Notes view
+"notes_view_title" = "Помітки";
+"temropary_suspended_title" = "Тимчасаово призупинено";
+"temporary_suspended_description" = "Компанія тимчасово згортає усі операції, залишаючи відкритою можливість повернення.";
+"reduction_of_business_title" = "Компанія скорочує деякі бізнес-операції, продовжуючи інші.";
+"reduction_of_business_description" = "Компанія скорочує деякі бізнес-операції, продовжуючи інші.";
+"suspension_of_investments_title" = "Призупинення інвестицій";
+"suspension_of_investments_description" = "Компанія відкладає майбутні заплановані інвестиції, розробки, маркетинг, продовжуючи основний бізнес.";
+"work_in_the_country_of_the_aggressor_title" = "Працюють у Країні Агресора";
+"work_in_the_country_of_the_aggressor_description" = "Компанія ігнорує вимоги щодо виходу/скорочення діяльності.";
+"russian_brand_title" = "Російський бренд";
+"russian_brand_description" = "Бренд, що бере початок у країні-ігресора.";
+"close_button_title" = "Закрити";

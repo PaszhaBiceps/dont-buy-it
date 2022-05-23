@@ -32,6 +32,8 @@
 		18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68B0283ACF6C00AC1B95 /* Font+Custom.swift */; };
 		18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC68B2283AD2E500AC1B95 /* AppButton.swift */; };
 		18F43766283BE9F3002A027B /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43765283BE9F3002A027B /* SearchButton.swift */; };
+		18F43768283BF4A7002A027B /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43767283BF4A7002A027B /* InfoLabel.swift */; };
+		18F4376A283BF6B2002A027B /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43769283BF6B2002A027B /* NotesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +65,8 @@
 		18AC68B0283ACF6C00AC1B95 /* Font+Custom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Custom.swift"; sourceTree = "<group>"; };
 		18AC68B2283AD2E500AC1B95 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		18F43765283BE9F3002A027B /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
+		18F43767283BF4A7002A027B /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
+		18F43769283BF6B2002A027B /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				18AC686F283AB83000AC1B95 /* MainView.swift */,
+				18F43769283BF6B2002A027B /* NotesView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 				18AC689C283ACAD300AC1B95 /* NavigationHeaderView.swift */,
 				18AC68B2283AD2E500AC1B95 /* AppButton.swift */,
 				18F43765283BE9F3002A027B /* SearchButton.swift */,
+				18F43767283BF4A7002A027B /* InfoLabel.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -283,11 +289,13 @@
 			files = (
 				18AC68AB283ACDBC00AC1B95 /* String+ImageNames.swift in Sources */,
 				18AC6870283AB83000AC1B95 /* MainView.swift in Sources */,
+				18F4376A283BF6B2002A027B /* NotesView.swift in Sources */,
 				18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */,
 				18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */,
 				18AC689D283ACAD300AC1B95 /* NavigationHeaderView.swift in Sources */,
 				18F43766283BE9F3002A027B /* SearchButton.swift in Sources */,
 				18AC686E283AB83000AC1B95 /* DontBuyItApp.swift in Sources */,
+				18F43768283BF4A7002A027B /* InfoLabel.swift in Sources */,
 				18AC68AD283ACEA100AC1B95 /* Strings.swift in Sources */,
 				18AC68AF283ACEE400AC1B95 /* String+Convenience.swift in Sources */,
 				18AC68A6283ACC9400AC1B95 /* Color+Constants.swift in Sources */,
