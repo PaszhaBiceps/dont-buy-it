@@ -15,6 +15,7 @@ struct AppButton: View {
     let activeColor: Color
     let text: String
     let verticalPadding: CGFloat
+    let horizontalPadding: CGFloat
     let action: () -> Void
     
     private var backgroundColor: Color {
@@ -35,6 +36,7 @@ struct AppButton: View {
                     .foregroundColor(isActive ? activeColor : .appGray)
             }
             .padding(.vertical, verticalPadding)
+            .padding(.horizontal, horizontalPadding)
             .frame(maxWidth: .infinity)
         })
         .background(backgroundColor)
@@ -52,12 +54,14 @@ struct AppButton: View {
          activeColor: Color,
          text: String,
          verticalPadding: CGFloat = 12,
+         horizontalPadding: CGFloat = .zero,
          action: @escaping (() -> Void)) {
         _isActive = isActive
         self.showDot = showDot
         self.activeColor = activeColor
         self.text = text
         self.verticalPadding = verticalPadding
+        self.horizontalPadding = horizontalPadding
         self.action = action
     }
 }

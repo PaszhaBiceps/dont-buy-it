@@ -70,25 +70,29 @@ struct MainView: View {
             }
             .padding(.top, 10)
             .padding(.horizontal, 16)
-//            ScrollView {
-//                LazyHStack(spacing: 10) {
-//                    ForEach(0..<10) { index in
-//                        AppButton(action: {
-//
-//                        }, showDot: false,
-//                                  activeColor: .white,
-//                                  text: "Button \(index)",
-//                                  isActive: .constant(false))
-//                    }
-//                }
-//            }
-//            .frame(width: .infinity, height: 50)
-//            .padding(.top, 25)
             
-            Spacer()
-            
-            Text("Wow")
-            
+            ScrollView(.horizontal,
+                       showsIndicators: false) {
+                LazyHStack(spacing: 10) {
+                    Section {
+                        ForEach(0..<10) { index in
+                            AppButton(isActive: .constant(false),
+                                      activeColor: .white,
+                                      text: "Button \(index)",
+                                      verticalPadding: 7,
+                                      horizontalPadding: 12) {
+                                
+                            }
+                        }
+                    } header: {
+                        SearchButton {
+                            
+                        }
+                    }
+                }.padding(.horizontal, 16)
+            }.frame(width: .infinity, height: 60)
+                .padding(.top, 15)
+                
             Spacer()
         }
     }
