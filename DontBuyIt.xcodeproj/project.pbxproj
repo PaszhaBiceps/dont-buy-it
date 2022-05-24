@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1853D54C283CC84A00179AC5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853D54B283CC84A00179AC5 /* Note.swift */; };
 		18AC686E283AB83000AC1B95 /* DontBuyItApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC686D283AB83000AC1B95 /* DontBuyItApp.swift */; };
 		18AC6870283AB83000AC1B95 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC686F283AB83000AC1B95 /* MainView.swift */; };
 		18AC6872283AB83200AC1B95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18AC6871283AB83200AC1B95 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1853D54B283CC84A00179AC5 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		18AC686A283AB83000AC1B95 /* DontBuyIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DontBuyIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18AC686D283AB83000AC1B95 /* DontBuyItApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DontBuyItApp.swift; sourceTree = "<group>"; };
 		18AC686F283AB83000AC1B95 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1853D549283CC82B00179AC5 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				18AC686F283AB83000AC1B95 /* MainView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		1853D54A283CC83600179AC5 /* NotesView */ = {
+			isa = PBXGroup;
+			children = (
+				1853D54D283CC86800179AC5 /* Models */,
+				18F43769283BF6B2002A027B /* NotesView.swift */,
+			);
+			path = NotesView;
+			sourceTree = "<group>";
+		};
+		1853D54D283CC86800179AC5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				1853D54B283CC84A00179AC5 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		18AC6861283AB83000AC1B95 = {
 			isa = PBXGroup;
 			children = (
@@ -166,8 +193,8 @@
 		18AC689A283ACAA100AC1B95 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				18AC686F283AB83000AC1B95 /* MainView.swift */,
-				18F43769283BF6B2002A027B /* NotesView.swift */,
+				1853D549283CC82B00179AC5 /* MainView */,
+				1853D54A283CC83600179AC5 /* NotesView */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -292,6 +319,7 @@
 				18F4376A283BF6B2002A027B /* NotesView.swift in Sources */,
 				18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */,
 				18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */,
+				1853D54C283CC84A00179AC5 /* Note.swift in Sources */,
 				18AC689D283ACAD300AC1B95 /* NavigationHeaderView.swift in Sources */,
 				18F43766283BE9F3002A027B /* SearchButton.swift in Sources */,
 				18AC686E283AB83000AC1B95 /* DontBuyItApp.swift in Sources */,
