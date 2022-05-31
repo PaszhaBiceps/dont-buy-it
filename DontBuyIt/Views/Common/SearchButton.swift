@@ -13,15 +13,13 @@ struct SearchButton: View {
     
     let action: () -> Void
     
-    private var backgroundColor: Color {
-        colorScheme == .dark ? Color.appDarkGray : .white
-    }
-    
     var body: some View {
         Button(action: action) {
             Image(.searchIcon)
         }.frame(width: 44, height: 44)
-            .background(backgroundColor)
+            .background(
+                colorScheme == .dark ? Color.appDarkGray : .white
+            )
             .cornerRadius(22)
             .shadow(color: .black.opacity(0.3),
                     radius: 2)

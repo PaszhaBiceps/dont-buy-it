@@ -7,8 +7,8 @@
 */
 
 // Nav Header View
-"navigation_header_part_one" = "Glory to";
-"navigation_header_part_two" = "Ukraine";
+"navigation_header_part_one" = "Glory";
+"navigation_header_part_two" = "to Ukraine";
 
 // Main View
 "main_screen_left_button_title" = "Left";

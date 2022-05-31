@@ -13,4 +13,5 @@ extension String {
     static let infoIcon = "info_icon"
     static let searchIcon = "search_icon"
     static let closeIcon = "close_icon"
+    static let placeholderSmall = "placeholder_small"
 }

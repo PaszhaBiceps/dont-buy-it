@@ -15,8 +15,8 @@ struct NavigationHeaderView: View {
                     .navigationHeaderPartOne
                     .localized
             )
-                .font(.robotoBlack(14))
-                .foregroundColor(.appBlue)
+            .font(.robotoBlack(14))
+            .foregroundColor(.appBlue)
             
             Image(.flagIcon)
             
@@ -25,8 +25,8 @@ struct NavigationHeaderView: View {
                     .navigationHeaderPartTwo
                     .localized
             )
-                .font(.robotoBlack(14))
-                .foregroundColor(.appYellow)
+            .font(.robotoBlack(14))
+            .foregroundColor(.appYellow)
         }
     }
 }

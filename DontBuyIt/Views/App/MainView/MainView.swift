@@ -35,66 +35,15 @@ struct MainView: View {
     var body: some View {
         ZStack {
             VStack {
-                ZStack {
-                    HStack {
-                        NavigationHeaderView()
-                    }
-                    
-                    HStack {
-                        Spacer()
-                        Button {
-                            showNotes.toggle()
-                        } label: {
-                            Image(.infoIcon)
-                        }
-                        .padding(.trailing, 16)
-                    }
-                }
+                headerView()
                 
-                HStack(spacing: 10) {
-                    AppButton(isActive: isLeftDatasourceSelected,
-                              showDot: true,
-                              activeColor: .green,
-                              text: ViewStrings.mainScreenLeftButtonTitle.localized.uppercased(),
-                              verticalPadding: 12,
-                              action: {
-                        currentDatasource = .left
-                    })
-                    
-                    AppButton(isActive: isStayedDatasourceSelected,
-                              showDot: true,
-                              activeColor: .red,
-                              text: ViewStrings.mainScreenRightButtonTitle.localized.uppercased(),
-                              verticalPadding: 12,
-                              action: {
-                        currentDatasource = .stayed
-                    })
-                }
-                .padding(.top, 10)
-                .padding(.horizontal, 16)
+                datasourceButtonsView()
+                    .padding(.top, 10)
+                    .padding(.horizontal, 16)
                 
-                ScrollView(.horizontal,
-                           showsIndicators: false) {
-                    LazyHStack(spacing: 10) {
-                        Section {
-                            ForEach(0..<10) { index in
-                                AppButton(isActive: .constant(false),
-                                          activeColor: .white,
-                                          text: "Button \(index)",
-                                          verticalPadding: 7,
-                                          horizontalPadding: 12) {
-                                    
-                                }
-                            }
-                        } header: {
-                            SearchButton {
-                                
-                            }
-                        }
-                    }.padding(.horizontal, 16)
-                }.frame(height: 60)
+                searchView()
                     .padding(.top, 15)
-                    
+                
                 Spacer()
             }
             
@@ -102,6 +51,70 @@ struct MainView: View {
                 NotesView(dismiss: $showNotes)
             }
         }
+    }
+    
+    // MARK: - Views
+    private func headerView() -> some View {
+        ZStack {
+            HStack {
+                NavigationHeaderView()
+            }
+            
+            HStack {
+                Spacer()
+                Button {
+                    showNotes.toggle()
+                } label: {
+                    Image(.infoIcon)
+                }
+                .padding(.trailing, 16)
+            }
+        }
+    }
+    
+    private func datasourceButtonsView() -> some View {
+        HStack(spacing: 10) {
+            AppButton(isActive: isLeftDatasourceSelected,
+                      showDot: true,
+                      activeColor: .green,
+                      text: ViewStrings.mainScreenLeftButtonTitle.localized.uppercased(),
+                      verticalPadding: 12,
+                      action: {
+                currentDatasource = .left
+            })
+            
+            AppButton(isActive: isStayedDatasourceSelected,
+                      showDot: true,
+                      activeColor: .red,
+                      text: ViewStrings.mainScreenRightButtonTitle.localized.uppercased(),
+                      verticalPadding: 12,
+                      action: {
+                currentDatasource = .stayed
+            })
+        }
+    }
+    
+    private func searchView() -> some View {
+        ScrollView(.horizontal,
+                   showsIndicators: false) {
+            LazyHStack(spacing: 10) {
+                Section {
+                    ForEach(0..<10) { index in
+                        AppButton(isActive: .constant(false),
+                                  activeColor: .white,
+                                  text: "Button \(index)",
+                                  verticalPadding: 7,
+                                  horizontalPadding: 12) {
+                            
+                        }
+                    }
+                } header: {
+                    SearchButton {
+                        
+                    }
+                }
+            }.padding(.horizontal, 16)
+        }.frame(height: 60)
     }
 }
 

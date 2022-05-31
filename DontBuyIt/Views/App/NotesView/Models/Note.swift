@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-enum Note: String, CaseIterable {
+enum Note: String,
+           CaseIterable {
     case temporarySuspended
     case reductionOfBusiness
     case suspensionOfInvestments

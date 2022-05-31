@@ -18,52 +18,73 @@ struct NotesView: View {
             
             VStack {
                 VStack {
-                    ZStack {
-                        HStack {
-                            Text(ViewStrings.notesViewTitle.localized)
-                                .font(.robotoBlack(16))
-                                .foregroundColor(colorScheme == .dark ? .white : .appDarkGray)
-                        }
-                        
-                        HStack {
-                            Spacer()
-                            
-                            Button {
-                                dismiss.toggle()
-                            } label: {
-                                Image(.closeIcon)
-                            }.padding(.trailing, 16)
-                        }
-                    }.padding(.top, 16)
+                    headerView()
+                        .padding(.top, 16)
                     
-                    Group {
-                        ForEach(Note.allCases, id: \.rawValue) { note in
-                            VStack {
-                                InfoLabel(color: note.color,
-                                          text: note.title)
-                                
-                                Text(note.description)
-                                    .font(.robotoMedium(14))
-                                    .foregroundColor(colorScheme == .dark ? .white : .appDarkGray)
-                            }.padding(.horizontal, 16)
-                        }
-                    }.padding(.top, 20)
+                    contentScrollView()
+                        .frame(maxHeight: 415)
                 }
                 
-                AppButton(isActive: .constant(true),
-                          activeColor: colorScheme == .dark ? .white : .appDarkGray,
-                          text: ViewStrings.closeButtonTitle.localized.uppercased()) {
-                    dismiss.toggle()
-                }.frame(width: 159)
-                    .padding(.top, 25)
+                closeButton()
+                    .padding(.top, 10)
                     .padding(.bottom, 16)
             }.background(
                 RoundedRectangle(cornerRadius: 16)
-                    .foregroundColor(colorScheme == .dark ? .appDarkGray : .white)
-            ).padding(.horizontal,16)
+                    .foregroundColor(
+                        colorScheme == .dark ? .appDarkGray : .white
+                    )
+            ).padding(.horizontal, 16)
             
             Spacer()
         }.background(.black.opacity(0.5))
+    }
+    
+    // MARK: - Views
+    private func headerView() -> some View {
+        ZStack {
+            HStack {
+                Text(ViewStrings.notesViewTitle.localized)
+                    .font(.robotoBlack(16))
+                    .foregroundColor(
+                        colorScheme == .dark ? .white : .appDarkGray
+                    )
+            }
+            
+            HStack {
+                Spacer()
+                
+                Button {
+                    dismiss.toggle()
+                } label: {
+                    Image(.closeIcon)
+                }.padding(.trailing, 16)
+            }
+        }
+    }
+    
+    private func contentScrollView() -> some View {
+        ScrollView(.vertical,
+                   showsIndicators: false) {
+            ForEach(Note.allCases, id: \.rawValue) { note in
+                VStack {
+                    InfoLabel(color: note.color,
+                              text: note.title)
+                    
+                    Text(note.description)
+                        .font(.robotoMedium(14))
+                        .foregroundColor(colorScheme == .dark ? .white : .appDarkGray)
+                }.padding(.horizontal, 16)
+                    .padding(.top, 15)
+            }
+        }
+    }
+    
+    private func closeButton() -> some View {
+        AppButton(isActive: .constant(true),
+                  activeColor: colorScheme == .dark ? .white : .appDarkGray,
+                  text: ViewStrings.closeButtonTitle.localized.uppercased()) {
+            dismiss.toggle()
+        }.frame(width: 159)
     }
 }
 

@@ -21,19 +21,22 @@ struct AppButton: View {
     private var backgroundColor: Color {
         colorScheme == .dark ? Color.appDarkGray : .white
     }
+    private var shadowColor: Color {
+        isActive ? activeColor.opacity(0.3) : .black.opacity(0.3)
+    }
     
     var body: some View {
         Button(action: action, label: {
             HStack {
                 if showDot {
                     Circle()
-                        .fill(isActive ? activeColor : .appGray)
+                        .fill(isActive ? activeColor : .appLightGray)
                         .frame(width: 12, height: 12)
                 }
 
                 Text(text)
                     .font(.robotoBold(14))
-                    .foregroundColor(isActive ? activeColor : .appGray)
+                    .foregroundColor(isActive ? activeColor : .appLightGray)
             }
             .padding(.vertical, verticalPadding)
             .padding(.horizontal, horizontalPadding)
@@ -46,7 +49,7 @@ struct AppButton: View {
                         lineWidth: 3)
         )
         .cornerRadius(20)
-        .shadow(color: isActive ? activeColor.opacity(0.3) : .black.opacity(0.3), radius: 3)
+        .shadow(color: shadowColor, radius: 3)
     }
     
     init(isActive: Binding<Bool>,

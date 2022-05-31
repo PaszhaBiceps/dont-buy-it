@@ -10,8 +10,9 @@ import SwiftUI
 extension Color {
     static var appBlue: Color { Color("appBlue") }
     static var appDarkGray: Color { Color("appDarkGray") }
-    static var appGray: Color { Color("appGray") }
+    static var appLightGray: Color { Color("appLightGray") }
     static var appGreen: Color { Color("appGreen") }
     static var appRed: Color { Color("appRed") }
     static var appYellow: Color { Color("appYellow") }
+    static var appGray: Color { Color("appGray") }
 }
