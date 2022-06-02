@@ -9,23 +9,18 @@ import SwiftUI
 
 struct MainView: View {
     
-    enum DatasourceType {
-        case left
-        case stayed
-    }
-    
     @Environment(\.colorScheme) var colorScheme
-    @State private var currentDatasource = DatasourceType.left
+    @ObservedObject private var viewModel = MainViewModel()
     private var isLeftDatasourceSelected: Binding<Bool> {
         Binding<Bool>(get: {
-            return currentDatasource == .left
+            return viewModel.activeDataSource == .left
         }, set: { _ in
            
         })
     }
     private var isStayedDatasourceSelected: Binding<Bool> {
         Binding<Bool>(get: {
-            return currentDatasource == .stayed
+            return viewModel.activeDataSource == .stayed
         }, set: { _ in
             
         })
@@ -52,14 +47,7 @@ struct MainView: View {
                 searchView()
                     .padding(.top, 15)
                 
-                // FIXME: Replace with LazyVStack when networking is implemented
-                BrandListItemView(viewModel: .init(brand: "Brand", products: [1, 2, 3, 4]))
-                    .padding(.horizontal, 16)
-                    .onTapGesture {
-                        brandToShow = "Brand"
-                    }
-                
-                Spacer()
+                brandsList()
             }
             
             if showNotes {
@@ -103,7 +91,7 @@ struct MainView: View {
                       text: ViewStrings.mainScreenLeftButtonTitle.localized.uppercased(),
                       verticalPadding: 12,
                       action: {
-                currentDatasource = .left
+                viewModel.activeDataSource = .left
             })
             
             AppButton(isActive: isStayedDatasourceSelected,
@@ -112,7 +100,7 @@ struct MainView: View {
                       text: ViewStrings.mainScreenRightButtonTitle.localized.uppercased(),
                       verticalPadding: 12,
                       action: {
-                currentDatasource = .stayed
+                viewModel.activeDataSource = .stayed
             })
         }
     }
@@ -138,6 +126,21 @@ struct MainView: View {
                 }
             }.padding(.horizontal, 16)
         }.frame(height: 60)
+    }
+    
+    private func brandsList() -> some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVStack(spacing: 22) {
+                ForEach(viewModel.brands, id: \.self) { brand in
+                    BrandListItemView(viewModel: .init(brand: "Brand \(brand)",
+                                                       products: [1, 2, 3, 4]))
+                        .padding(.horizontal, 16)
+                        .onTapGesture {
+                            brandToShow = "Brand \(brand)"
+                        }
+                }
+            }.padding(.top, 5)
+        }
     }
 }
 
