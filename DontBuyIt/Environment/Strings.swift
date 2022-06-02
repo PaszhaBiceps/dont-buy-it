@@ -26,4 +26,6 @@ enum ViewStrings: String, Localizable {
     case russianBrandTitle = "russian_brand_title"
     case russianBrandDescritpion = "russian_brand_description"
     case closeButtonTitle = "close_button_title"
+    
+    case productListTitle = "product_list_title"
 }

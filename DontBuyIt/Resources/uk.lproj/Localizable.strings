@@ -27,3 +27,6 @@
 "russian_brand_title" = "Російський бренд";
 "russian_brand_description" = "Бренд, що бере початок у країні-ігресора.";
 "close_button_title" = "Закрити";
+
+// Brand Details View
+"product_list_title" = "Торгові Марки";

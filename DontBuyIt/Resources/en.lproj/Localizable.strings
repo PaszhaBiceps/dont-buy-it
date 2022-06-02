@@ -27,3 +27,6 @@
 "russian_brand_title" = "Russian Brand";
 "russian_brand_description" = "The brand that originates in the Agresor country.";
 "close_button_title" = "Close";
+
+// Brand Details View
+"product_list_title" = "Products";
