@@ -29,7 +29,7 @@ struct ProductItemView: View {
                 .padding(.leading, 8)
             
             Spacer()
-        }.frame(width: .infinity)
+        }.frame(width: nil)
     }
 }
 

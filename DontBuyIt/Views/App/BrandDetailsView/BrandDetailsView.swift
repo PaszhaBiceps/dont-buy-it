@@ -59,7 +59,7 @@ struct BrandDetailsView: View {
                             ProductItemView(imageUrl: "", name: "Product \(product)")
                         }
                     }
-                    .frame(width: .infinity)
+                    .frame(width: nil)
                     .padding(.bottom, 16)
                 }
             }

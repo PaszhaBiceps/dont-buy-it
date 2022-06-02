@@ -25,7 +25,7 @@ struct BrandListItemView: View {
             contentStack()
             
             Spacer()
-        }.frame(width: .infinity)
+        }.frame(width: nil)
             .background(
                 RoundedRectangle(cornerRadius: 16)
                     .foregroundColor(colorScheme == .dark ? .appDarkGray : .white)
