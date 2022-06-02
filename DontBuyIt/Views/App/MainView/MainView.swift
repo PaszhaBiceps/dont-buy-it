@@ -31,6 +31,14 @@ struct MainView: View {
         })
     }
     @State private var showNotes: Bool = false
+    @State private var brandToShow: String?
+    private var showBrandDetails: Binding<Bool> {
+        Binding<Bool>(get: {
+            return brandToShow != nil
+        }, set: { _ in
+            
+        })
+    }
     
     var body: some View {
         ZStack {
@@ -44,11 +52,26 @@ struct MainView: View {
                 searchView()
                     .padding(.top, 15)
                 
+                // FIXME: Replace with LazyVStack when networking is implemented
+                BrandListItemView(viewModel: .init(brand: "Brand", products: [1, 2, 3, 4]))
+                    .padding(.horizontal, 16)
+                    .onTapGesture {
+                        brandToShow = "Brand"
+                    }
+                
                 Spacer()
             }
             
             if showNotes {
                 NotesView(dismiss: $showNotes)
+            }
+        }
+        .sheet(isPresented: showBrandDetails) {
+            if let brand = brandToShow {
+                BrandDetailsView(viewModel: .init(brand: brand))
+                    .onDisappear {
+                        brandToShow = nil
+                    }
             }
         }
     }
