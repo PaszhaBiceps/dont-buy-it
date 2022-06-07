@@ -29,3 +29,13 @@ enum ViewStrings: String, Localizable {
     
     case productListTitle = "product_list_title"
 }
+
+struct Constants {
+    static let baseURL = "https://dont-buy-it-loader.herokuapp.com"
+    
+    enum Paths: String {
+        case grades = "/api/grades"
+        case products = "/api/products"
+        case brands = "/api/brands"
+    }
+}

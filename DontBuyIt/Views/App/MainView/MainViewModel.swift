@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class MainViewModel: ObservableObject {
     
@@ -17,8 +18,18 @@ class MainViewModel: ObservableObject {
     @Published var activeDataSource: DatasourceType
     @Published var brands: [Int]
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init() {
         self.activeDataSource = .left
         self.brands = [1, 2, 3, 4, 5, 6]
+    }
+    
+    func fetchGrades() {
+        API.shared.fetchGrades().sink(receiveCompletion: { completion in
+            
+        }, receiveValue: { grades in
+            
+        }).store(in: &cancellables)
     }
 }

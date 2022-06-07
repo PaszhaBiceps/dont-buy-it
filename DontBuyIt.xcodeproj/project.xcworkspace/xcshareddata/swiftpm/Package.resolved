@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "networking",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/freshOS/Networking",
+      "state" : {
+        "revision" : "d4c9298a71a4ef66683da8cf21d700482c7f284b",
+        "version" : "1.2.1"
+      }
+    }
+  ],
+  "version" : 2
+}
