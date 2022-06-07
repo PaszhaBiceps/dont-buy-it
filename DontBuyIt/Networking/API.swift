@@ -19,7 +19,11 @@ struct API: NetworkingService {
         network.logLevel = .debug
     }
     
-    func fetchGrades() -> AnyPublisher<[GradeModel], Error> {
-        get(Constants.Paths.grades.rawValue)
+    func fetchGrades() async throws -> [GradeModel] {
+        try await get(Constants.Paths.grades.rawValue)
+    }
+    
+    func fetchBrands() async throws -> [BrandModel] {
+        try await get(Constants.Paths.brands.rawValue)
     }
 }

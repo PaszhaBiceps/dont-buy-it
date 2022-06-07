@@ -116,7 +116,7 @@ struct MainView: View {
                                   text: "Button \(index)",
                                   verticalPadding: 7,
                                   horizontalPadding: 12) {
-                            viewModel.fetchGrades()
+                            
                         }
                     }
                 } header: {

@@ -28,6 +28,8 @@ enum ViewStrings: String, Localizable {
     case closeButtonTitle = "close_button_title"
     
     case productListTitle = "product_list_title"
+    
+    case loadingResourceMessage = "loading_resources_message"
 }
 
 struct Constants {

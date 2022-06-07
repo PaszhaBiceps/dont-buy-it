@@ -8,6 +8,7 @@
 import Foundation
 
 extension String {
+    static let logoSplash = "logo_splash"
     static let placeholder = "placeholder"
     static let flagIcon = "ukrainian_flag_small_icon"
     static let infoIcon = "info_icon"

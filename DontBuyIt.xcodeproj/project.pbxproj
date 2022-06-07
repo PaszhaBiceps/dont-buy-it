@@ -46,6 +46,8 @@
 		18D8BEB3284F3B190031A6AB /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8BEB2284F3B190031A6AB /* Color+Extensions.swift */; };
 		18D8BEB8284F3F640031A6AB /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 18D8BEB7284F3F640031A6AB /* Networking */; };
 		18D8BEBA284F41B50031A6AB /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8BEB9284F41B50031A6AB /* API.swift */; };
+		18D8BEBD284F4A4F0031A6AB /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8BEBC284F4A4F0031A6AB /* SplashView.swift */; };
+		18D8BEBF284F4C6D0031A6AB /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D8BEBE284F4C6D0031A6AB /* SplashViewModel.swift */; };
 		18F43766283BE9F3002A027B /* SearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43765283BE9F3002A027B /* SearchButton.swift */; };
 		18F43768283BF4A7002A027B /* InfoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43767283BF4A7002A027B /* InfoLabel.swift */; };
 		18F4376A283BF6B2002A027B /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F43769283BF6B2002A027B /* NotesView.swift */; };
@@ -93,6 +95,8 @@
 		18AC68B2283AD2E500AC1B95 /* AppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppButton.swift; sourceTree = "<group>"; };
 		18D8BEB2284F3B190031A6AB /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		18D8BEB9284F41B50031A6AB /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		18D8BEBC284F4A4F0031A6AB /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		18D8BEBE284F4C6D0031A6AB /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		18F43765283BE9F3002A027B /* SearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchButton.swift; sourceTree = "<group>"; };
 		18F43767283BF4A7002A027B /* InfoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLabel.swift; sourceTree = "<group>"; };
 		18F43769283BF6B2002A027B /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 		18AC689A283ACAA100AC1B95 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				18D8BEBB284F4A380031A6AB /* SplashView */,
 				1853D549283CC82B00179AC5 /* MainView */,
 				1853D54A283CC83600179AC5 /* NotesView */,
 				189CFC3B2848D98700AA80E0 /* BrandDetailsView */,
@@ -333,6 +338,15 @@
 			children = (
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		18D8BEBB284F4A380031A6AB /* SplashView */ = {
+			isa = PBXGroup;
+			children = (
+				18D8BEBE284F4C6D0031A6AB /* SplashViewModel.swift */,
+				18D8BEBC284F4A4F0031A6AB /* SplashView.swift */,
+			);
+			path = SplashView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,11 +442,13 @@
 				18AC68AB283ACDBC00AC1B95 /* String+ImageNames.swift in Sources */,
 				18AC6870283AB83000AC1B95 /* MainView.swift in Sources */,
 				18F4376A283BF6B2002A027B /* NotesView.swift in Sources */,
+				18D8BEBF284F4C6D0031A6AB /* SplashViewModel.swift in Sources */,
 				189CFC4C2848F42E00AA80E0 /* BrandModel.swift in Sources */,
 				18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */,
 				18D8BEB3284F3B190031A6AB /* Color+Extensions.swift in Sources */,
 				1890243228475831007D16ED /* LoadingView.swift in Sources */,
 				189CFC482848F28D00AA80E0 /* GradeModel.swift in Sources */,
+				18D8BEBD284F4A4F0031A6AB /* SplashView.swift in Sources */,
 				18D8BEBA284F41B50031A6AB /* API.swift in Sources */,
 				18AC68B3283AD2E500AC1B95 /* AppButton.swift in Sources */,
 				189CFC3E2848DEF300AA80E0 /* ProductItemView.swift in Sources */,

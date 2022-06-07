@@ -30,3 +30,6 @@
 
 // Brand Details View
 "product_list_title" = "Торгові Марки";
+
+// Splash View
+"loading_resources_message" = "Завантажуємо ресурси";
