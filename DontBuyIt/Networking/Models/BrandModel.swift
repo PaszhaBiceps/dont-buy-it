@@ -8,14 +8,14 @@
 import Foundation
 
 struct BrandModel: Codable {
-    private let translatedCountry: String?
-    private let translatedAction: String?
-    private let translatedGicsIndustrySector: String?
-    private let translatedMagnitudeOfOccupantOperations: String?
-    private let originalCountry: String?
-    private let originalAction: String?
-    private let originalGicsIndustrySector: String?
-    private let originalMagnitudeOfOccupantOperations: String?
+    let translatedCountry: String?
+    let translatedAction: String?
+    let translatedGicsIndustrySector: String?
+    let translatedMagnitudeOfOccupantOperations: String?
+    let originalCountry: String?
+    let originalAction: String?
+    let originalGicsIndustrySector: String?
+    let originalMagnitudeOfOccupantOperations: String?
     
     let name: String?
     let logoURL: String?

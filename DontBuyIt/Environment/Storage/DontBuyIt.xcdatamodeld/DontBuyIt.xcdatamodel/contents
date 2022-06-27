@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Brand" representedClassName="Brand" syncable="YES" codeGenerationType="class">
+        <attribute name="grade" optional="YES" attributeType="String"/>
+        <attribute name="linkToAnnouncement" optional="YES" attributeType="String"/>
+        <attribute name="logoURL" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="originalAction" optional="YES" attributeType="String"/>
+        <attribute name="originalCountry" optional="YES" attributeType="String"/>
+        <attribute name="originalGicsIndustrySector" optional="YES" attributeType="String"/>
+        <attribute name="originalMagnitudeOfOccupantOperations" optional="YES" attributeType="String"/>
+        <attribute name="translatedAction" optional="YES" attributeType="String"/>
+        <attribute name="translatedCountry" optional="YES" attributeType="String"/>
+        <attribute name="translatedGicsIndusctrySector" optional="YES" attributeType="String"/>
+        <attribute name="translatedMagnitudeOfOccupantOperations" optional="YES" attributeType="String"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product"/>
+    </entity>
+    <entity name="Grade" representedClassName="Grade" syncable="YES" codeGenerationType="class">
+        <attribute name="avalaibleForPurchase" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="colorHexString" optional="YES" attributeType="String"/>
+        <attribute name="displayName" optional="YES" attributeType="String"/>
+        <attribute name="gradeDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="priority" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
+        <attribute name="brandName" optional="YES" attributeType="String"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Grade" positionX="-170.7047729492188" positionY="-110.5332946777344" width="128" height="14"/>
+        <element name="Brand" positionX="235.3448486328125" positionY="-13.73794555664062" width="128" height="14"/>
+        <element name="Product" positionX="-36" positionY="9" width="128" height="14"/>
+    </elements>
+</model>

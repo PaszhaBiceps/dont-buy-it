@@ -20,7 +20,8 @@ struct GradeModel: Codable {
         (name ?? "").lowercased().hashValue
     }
     var color: Color? {
-        guard let hex = colorHexString else { return nil }
+        guard let hex = colorHexString,
+              !hex.isEmpty else { return nil }
         return Color(hex)
     }
     
