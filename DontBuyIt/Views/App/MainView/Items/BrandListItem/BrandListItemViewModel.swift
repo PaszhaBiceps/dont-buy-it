@@ -10,12 +10,12 @@ import Foundation
 class BrandListItemViewModel: ObservableObject {
     
     enum BrandProduct {
-        case brand(_ model: ProductModel)
+        case product(_ model: ProductModel)
         case additionalCount(_ count: Int)
         
         var id: Int {
             switch self {
-            case .brand(let model):
+            case .product(let model):
                 return model.id
             case .additionalCount:
                 return "additionalCount".hashValue
@@ -30,12 +30,12 @@ class BrandListItemViewModel: ObservableObject {
          products: [ProductModel]) {
         self.brand = brand
         if products.count > 3 {
-            self.products = products.prefix(2).map({ .brand($0) })
+            self.products = products.prefix(2).map({ .product($0) })
             self.products.append(
                 .additionalCount(products.count - 2)
             )
         } else {
-            self.products = products.map({ .brand($0) })
+            self.products = products.map({ .product($0) })
         }
     }
 }

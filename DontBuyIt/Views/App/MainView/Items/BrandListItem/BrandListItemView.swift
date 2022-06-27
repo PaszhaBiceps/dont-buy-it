@@ -36,17 +36,32 @@ struct BrandListItemView: View {
     
     // MARK: - Views
     private func mainImage() -> some View {
-        Image(.placeholder)
-            .resizable()
-            .frame(width: 76,
-                   height: 76)
-            .aspectRatio(contentMode: .fill)
-            .clipShape(
-                RoundedRectangle(cornerRadius: 8,
-                                 style: .continuous)
-            )
-            .shadow(color: .black.opacity(0.3),
-                    radius: 2)
+        AsyncImage(url: URL(string: viewModel.brand.logoURL ?? ""))
+        { image in
+            image
+                .resizable()
+                .frame(width: 76,
+                       height: 76)
+                .aspectRatio(contentMode: .fill)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 8,
+                                     style: .continuous)
+                )
+                .shadow(color: .black.opacity(0.3),
+                        radius: 2)
+        } placeholder: {
+            Image(.placeholder)
+                .resizable()
+                .frame(width: 76,
+                       height: 76)
+                .aspectRatio(contentMode: .fill)
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 8,
+                                     style: .continuous)
+                )
+                .shadow(color: .black.opacity(0.3),
+                        radius: 2)
+        }
     }
     
     private func contentStack() -> some View {
@@ -61,11 +76,10 @@ struct BrandListItemView: View {
             LazyHStack(spacing: 4) {
                 ForEach(viewModel.products, id: \.id) { item in
                     switch item {
-                    case .brand(let model):
-                        if let imageUrl = model.imageUrl,
-                           imageUrl.isEmpty {
-                            // FIXME: Actually load image
-                            Image(.placeholderSmall)
+                    case .product(let model):
+                        AsyncImage(url: URL(string: model.imageUrl ?? ""))
+                        { image in
+                            image
                                 .resizable()
                                 .frame(width: 18,
                                        height: 18)
@@ -73,7 +87,7 @@ struct BrandListItemView: View {
                                 .clipShape(
                                     Circle()
                                 )
-                        } else {
+                        } placeholder: {
                             Image(.placeholderSmall)
                                 .resizable()
                                 .frame(width: 18,
@@ -83,6 +97,7 @@ struct BrandListItemView: View {
                                     Circle()
                                 )
                         }
+
                     case .additionalCount(let count):
                         Text("+\(count > 99 ? 99 : count)")
                             .frame(width: 18,

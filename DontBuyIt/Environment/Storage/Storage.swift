@@ -45,6 +45,7 @@ final class Storage: ObservableObject {
         let request: NSFetchRequest<Grade> = Grade.fetchRequest()
         return context.performAndWait {
             let list = try? request.execute().map({ GradeModel(dbModel: $0) })
+            cacheGrades = list?.sorted(by: { ($0.priority ?? 0) < ($1.priority ?? 0) })
             return list ?? []
         }
     }
@@ -76,6 +77,9 @@ final class Storage: ObservableObject {
         let request: NSFetchRequest<Brand> = Brand.fetchRequest()
         return context.performAndWait {
             let list = try? request.execute().map({ BrandModel(dbModel: $0) })
+            cacheBrands = list?.sorted(by: {
+                ($0.name ?? "").compare($1.name ?? "") == .orderedAscending
+            })
             return list ?? []
         }
     }
@@ -107,6 +111,7 @@ final class Storage: ObservableObject {
         let request: NSFetchRequest<Product> = Product.fetchRequest()
         return context.performAndWait {
             let list = try? request.execute().map({ ProductModel(dbModel: $0) })
+            cacheProducts = list
             return list ?? []
         }
     }
