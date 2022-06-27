@@ -10,38 +10,32 @@ import Foundation
 class BrandListItemViewModel: ObservableObject {
     
     enum BrandProduct {
-        case brand(imageURL: String)
+        case brand(_ model: ProductModel)
         case additionalCount(_ count: Int)
         
-        var id: String {
+        var id: Int {
             switch self {
-            case .brand(let imageURL):
-                return imageURL
+            case .brand(let model):
+                return model.id
             case .additionalCount:
-                return "additionalCount"
+                return "additionalCount".hashValue
             }
         }
     }
     
-    //FIXME: Add proper brand model when available
-    @Published var brand: String
+    @Published var brand: BrandModel
     @Published var products: [BrandProduct]
     
-    init(brand: String,
-         products: [Int]) {
+    init(brand: BrandModel,
+         products: [ProductModel]) {
         self.brand = brand
-        // FIXME: Use proper products when available
         if products.count > 3 {
-            self.products = products.prefix(2).map({
-                .brand(imageURL: "\($0)")
-            })
+            self.products = products.prefix(2).map({ .brand($0) })
             self.products.append(
                 .additionalCount(products.count - 2)
             )
         } else {
-            self.products = products.map({
-                .brand(imageURL: "\($0)")
-            })
+            self.products = products.map({ .brand($0) })
         }
     }
 }

@@ -9,6 +9,12 @@ import Foundation
 import Networking
 import Combine
 
+protocol APIModel {
+    var id: Int { get }
+    
+    static func stub() -> Self
+}
+
 struct API: NetworkingService {
     static var shared = API()
     
@@ -25,5 +31,9 @@ struct API: NetworkingService {
     
     func fetchBrands() async throws -> [BrandModel] {
         try await get(Constants.Paths.brands.rawValue)
+    }
+    
+    func fetchProducts() async throws -> [ProductModel] {
+        try await get(Constants.Paths.products.rawValue)
     }
 }

@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct GradeModel: Codable {
+struct GradeModel: APIModel,
+                   Codable {
     let name: String?
     let displayName: String?
     let description: String?
@@ -32,5 +33,15 @@ struct GradeModel: Codable {
         case colorHexString = "color"
         case priority
         case availableForPurchase
+    }
+    
+    // MARK: - Convenience
+    static func stub() -> Self {
+        return GradeModel(name: "Grade",
+                          displayName: "Оцінка",
+                          description: "Stub description",
+                          colorHexString: "#D8319C",
+                          priority: 0,
+                          availableForPurchase: true)
     }
 }

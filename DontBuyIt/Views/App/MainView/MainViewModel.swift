@@ -15,13 +15,17 @@ class MainViewModel: ObservableObject {
         case stayed
     }
     
-    @Published var activeDataSource: DatasourceType
-    @Published var brands: [Int]
+    @Published var activeDataSource: DatasourceType = .left
+    @Published var brands: [BrandModel] = []
+    private var storage: Storage?
     
     private var cancellables = Set<AnyCancellable>()
     
-    init() {
-        self.activeDataSource = .left
-        self.brands = [1, 2, 3, 4, 5, 6]
+    init() {}
+    
+    // MARK: - Public
+    func prepareInfo(storage: Storage) {
+        self.storage = storage
+        brands = storage.getBrands()
     }
 }

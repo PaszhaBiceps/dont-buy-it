@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var storage: Storage
     @ObservedObject private var viewModel = MainViewModel()
     private var isLeftDatasourceSelected: Binding<Bool> {
         Binding<Bool>(get: {
@@ -44,9 +45,6 @@ struct MainView: View {
                     .padding(.top, 10)
                     .padding(.horizontal, 16)
                 
-                searchView()
-                    .padding(.top, 15)
-                
                 brandsList()
             }
             
@@ -54,6 +52,10 @@ struct MainView: View {
                 NotesView(dismiss: $showNotes)
             }
         }
+        .navigationBarHidden(true)
+        .onAppear(perform: {
+            viewModel.prepareInfo(storage: storage)
+        })
         .sheet(isPresented: showBrandDetails) {
             if let brand = brandToShow {
                 BrandDetailsView(viewModel: .init(brand: brand))
@@ -131,13 +133,15 @@ struct MainView: View {
     private func brandsList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 22) {
-                ForEach(viewModel.brands, id: \.self) { brand in
-                    BrandListItemView(viewModel: .init(brand: "Brand \(brand)",
-                                                       products: [1, 2, 3, 4]))
-                        .padding(.horizontal, 16)
-                        .onTapGesture {
-                            brandToShow = "Brand \(brand)"
-                        }
+                ForEach(viewModel.brands, id: \.id) { brand in
+                    BrandListItemView(
+                        viewModel: .init(brand: brand,
+                                         products: [ProductModel.stub()])
+                    )
+                    .padding(.horizontal, 16)
+                    .onTapGesture {
+                        brandToShow = "Brand \(brand)"
+                    }
                 }
             }.padding(.top, 5)
         }
@@ -147,5 +151,6 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
+            .environmentObject(Storage())
     }
 }

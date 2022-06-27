@@ -10,6 +10,7 @@ import SwiftUI
 struct SplashView: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var storage: Storage
     @ObservedObject private var viewModel = SplashViewModel()
     private var navigationBinding: Binding<Bool> {
         Binding<Bool>(get: {
@@ -49,7 +50,7 @@ struct SplashView: View {
         }
         .navigationBarHidden(true)
         .onAppear {
-            viewModel.fetchDataIfNeeded()
+            viewModel.fetchDataIfNeeded(storage)
         }
     }
     
@@ -73,5 +74,6 @@ struct SplashView: View {
 struct SplashView_Previews: PreviewProvider {
     static var previews: some View {
         SplashView()
+            .environmentObject(Storage())
     }
 }

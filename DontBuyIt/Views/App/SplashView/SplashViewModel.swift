@@ -22,16 +22,25 @@ class SplashViewModel: ObservableObject {
     init() {}
     
     // MARK: - Public
-    func fetchDataIfNeeded() {
-        // FIXME: Check if CoreData already contains info and it actually needs loading
+    func fetchDataIfNeeded(_ storage: Storage) {
         loadingState = .loading
+        if !storage.getBrands().isEmpty,
+           !storage.getGrades().isEmpty,
+           !storage.getProducts().isEmpty {
+            loadingState = .finished(error: nil)
+            return
+        }
+        
         Task {
             do {
                 async let grades = try API.shared.fetchGrades()
                 async let brands = try API.shared.fetchBrands()
+                async let products = try API.shared.fetchProducts()
                 
                 try await store(grades: grades,
-                                brands: brands)
+                                brands: brands,
+                                products: products,
+                                storage: storage)
                 await MainActor.run(body: {[weak self] in
                     self?.loadingState = .finished(error: nil)
                 })
@@ -43,8 +52,13 @@ class SplashViewModel: ObservableObject {
         }
     }
     
+    // MARK: - Private
     func store(grades: [GradeModel],
-               brands: [BrandModel]) {
-        
+               brands: [BrandModel],
+               products: [ProductModel],
+               storage: Storage) {
+        storage.store(grades: grades)
+        storage.store(brands: brands)
+        storage.store(products: products)
     }
 }

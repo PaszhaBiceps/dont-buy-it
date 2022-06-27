@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct BrandModel: Codable {
+struct BrandModel: APIModel,
+                   Codable {
+    
     let translatedCountry: String?
     let translatedAction: String?
     let translatedGicsIndustrySector: String?
@@ -69,5 +71,24 @@ struct BrandModel: Codable {
         case grade
         case linkToAnnouncement
         case products
+    }
+    
+    // MARK: - Convenience
+    static func stub() -> BrandModel {
+        return BrandModel(
+            translatedCountry: "Карїна",
+            translatedAction: "Дія",
+            translatedGicsIndustrySector: "Сектор",
+            translatedMagnitudeOfOccupantOperations: "Магнітуда Операцій",
+            originalCountry: "Country",
+            originalAction: "Action",
+            originalGicsIndustrySector: "Sector",
+            originalMagnitudeOfOccupantOperations: "Magnitude of Operations",
+            name: "Brand",
+            logoURL: nil,
+            grade: "Grade",
+            linkToAnnouncement: nil,
+            products: [ProductModel.stub()]
+        )
     }
 }

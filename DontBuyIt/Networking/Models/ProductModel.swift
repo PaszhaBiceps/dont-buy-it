@@ -7,12 +7,20 @@
 
 import Foundation
 
-struct ProductModel: Codable {
+struct ProductModel: APIModel,
+                     Codable {
     let name: String?
     let brandName: String?
     let imageUrl: String?
     
     var id: Int {
         return (name ?? "").hashValue
+    }
+    
+    // MARK: - Convenience
+    static func stub() -> Self {
+        return ProductModel(name: "Product",
+                            brandName: "Brand",
+                            imageUrl: nil)
     }
 }

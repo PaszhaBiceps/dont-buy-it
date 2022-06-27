@@ -52,7 +52,7 @@ struct BrandListItemView: View {
     private func contentStack() -> some View {
         VStack(alignment: .leading,
                spacing: 12) {
-            Text(viewModel.brand)
+            Text(viewModel.brand.name ?? "")
                 .font(.robotoBlack(16))
                 .foregroundColor(
                     colorScheme == .dark ? .white : .appDarkGray
@@ -61,16 +61,28 @@ struct BrandListItemView: View {
             LazyHStack(spacing: 4) {
                 ForEach(viewModel.products, id: \.id) { item in
                     switch item {
-                    case .brand:
-                        // FIXME: Replace placeholder with image url when available
-                        Image(.placeholderSmall)
-                            .resizable()
-                            .frame(width: 18,
-                                   height: 18)
-                            .aspectRatio(contentMode: .fill)
-                            .clipShape(
-                                Circle()
-                            )
+                    case .brand(let model):
+                        if let imageUrl = model.imageUrl,
+                           imageUrl.isEmpty {
+                            // FIXME: Actually load image
+                            Image(.placeholderSmall)
+                                .resizable()
+                                .frame(width: 18,
+                                       height: 18)
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(
+                                    Circle()
+                                )
+                        } else {
+                            Image(.placeholderSmall)
+                                .resizable()
+                                .frame(width: 18,
+                                       height: 18)
+                                .aspectRatio(contentMode: .fill)
+                                .clipShape(
+                                    Circle()
+                                )
+                        }
                     case .additionalCount(let count):
                         Text("+\(count > 99 ? 99 : count)")
                             .frame(width: 18,
@@ -96,8 +108,8 @@ struct BrandListItemView: View {
 struct BrandListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            BrandListItemView(viewModel: .init(brand: "Noice",
-                                               products: [1,2,3,4,5]))
+            BrandListItemView(viewModel: .init(brand: BrandModel.stub(),
+                                               products: [ProductModel.stub()]))
                 .padding(.horizontal, 26)
             
             Spacer()

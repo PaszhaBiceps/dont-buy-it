@@ -12,6 +12,7 @@ final class Storage: ObservableObject {
     
     private var cacheGrades: [GradeModel]?
     private var cacheBrands: [BrandModel]?
+    private var cacheProducts: [ProductModel]?
     
     func store(grades: [GradeModel]) {
         cacheGrades = grades
@@ -75,6 +76,37 @@ final class Storage: ObservableObject {
         }
     }
     
+    func store(products: [ProductModel]) {
+        cacheProducts = products
+        let context = PersistenceController.newBackgroundContext()
+        context.perform {[weak self] in
+            guard let self = self else { return }
+            self.deleteProducts(context: context,
+                                save: false)
+            products.forEach({
+                _ = Product(response: $0,
+                            context: context)
+            })
+            
+            try? context.save()
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+            }
+        }
+    }
+    
+    func getProducts() -> [ProductModel] {
+        if let cacheProducts = cacheProducts {
+            return cacheProducts
+        }
+        let context = PersistenceController.viewContext
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        return context.performAndWait {
+            let list = try? request.execute().map({ ProductModel(dbModel: $0) })
+            return list ?? []
+        }
+    }
+    
     // MARK: - Private
     private func deleteGrades(context: NSManagedObjectContext,
                               save: Bool) {
@@ -91,6 +123,18 @@ final class Storage: ObservableObject {
     private func deleteBrands(context: NSManagedObjectContext,
                               save: Bool) {
         let request: NSFetchRequest<Brand> = Brand.fetchRequest()
+        let objects = try? context.fetch(request)
+        objects?.forEach({
+            context.delete($0)
+        })
+        if save {
+            try? context.save()
+        }
+    }
+    
+    private func deleteProducts(context: NSManagedObjectContext,
+                                save: Bool) {
+        let request: NSFetchRequest<Product> = Product.fetchRequest()
         let objects = try? context.fetch(request)
         objects?.forEach({
             context.delete($0)
