@@ -10,25 +10,32 @@ import SwiftUI
 
 struct GradeModel: APIModel,
                    Codable {
-    let name: String?
-    let displayName: String?
+    let originalName: String?
+    let translatedName: String?
     let description: String?
     let colorHexString: String?
     let priority: Int?
     let availableForPurchase: Bool
     
     var id: Int {
-        (name ?? "").lowercased().hashValue
+        (originalName ?? "").lowercased().hashValue
     }
     var color: Color? {
         guard let hex = colorHexString,
               !hex.isEmpty else { return nil }
         return Color(hex)
     }
+    var name: String? {
+        if Locale.current.languageCode == "uk" {
+            return translatedName
+        } else {
+            return originalName
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
-        case name
-        case displayName
+        case originalName = "name"
+        case translatedName = "displayName"
         case description
         case colorHexString = "color"
         case priority
@@ -37,11 +44,12 @@ struct GradeModel: APIModel,
     
     // MARK: - Convenience
     static func stub() -> Self {
-        return GradeModel(name: "Grade",
-                          displayName: "Оцінка",
+        return GradeModel(originalName: "Grade",
+                          translatedName: "Оцінка",
                           description: "Stub description",
                           colorHexString: "#D8319C",
                           priority: 0,
                           availableForPurchase: true)
+        
     }
 }

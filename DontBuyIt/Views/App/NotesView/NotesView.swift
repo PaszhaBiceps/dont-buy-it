@@ -10,6 +10,8 @@ import SwiftUI
 struct NotesView: View {
     
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var storage: Storage
+    @ObservedObject private var viewModel = NotesViewModel()
     @Binding var dismiss: Bool
     
     var body: some View {
@@ -36,7 +38,11 @@ struct NotesView: View {
             ).padding(.horizontal, 16)
             
             Spacer()
-        }.background(.black.opacity(0.5))
+        }
+        .background(.black.opacity(0.5))
+        .onAppear(perform: {
+            viewModel.prepareInfo(storage)
+        })
     }
     
     // MARK: - Views
@@ -65,12 +71,12 @@ struct NotesView: View {
     private func contentScrollView() -> some View {
         ScrollView(.vertical,
                    showsIndicators: false) {
-            ForEach(Note.allCases, id: \.rawValue) { note in
+            ForEach(viewModel.grades, id: \.id) { grade in
                 VStack {
-                    InfoLabel(color: note.color,
-                              text: note.title)
+                    InfoLabel(color: grade.color ?? .clear,
+                              text: grade.name ?? "")
                     
-                    Text(note.description)
+                    Text(grade.description ?? "")
                         .font(.robotoMedium(14))
                         .foregroundColor(colorScheme == .dark ? .white : .appDarkGray)
                 }.padding(.horizontal, 16)
@@ -91,5 +97,6 @@ struct NotesView: View {
 struct NotesView_Previews: PreviewProvider {
     static var previews: some View {
         NotesView(dismiss: .constant(false))
+            .environmentObject(Storage())
     }
 }

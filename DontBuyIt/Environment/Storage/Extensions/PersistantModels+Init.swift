@@ -14,9 +14,9 @@ extension Grade {
                   insertInto: context)
         avalaibleForPurchase = response.availableForPurchase
         colorHexString = response.colorHexString
-        displayName = response.displayName
+        displayName = response.translatedName
         gradeDescription = response.description
-        name = response.name
+        name = response.originalName
         priority = Int64(response.priority ?? 0)
     }
 }

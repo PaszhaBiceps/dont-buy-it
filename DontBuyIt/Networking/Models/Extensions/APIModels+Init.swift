@@ -10,8 +10,8 @@ import Foundation
 extension GradeModel {
     init(dbModel: Grade) {
         self.init(
-            name: dbModel.name,
-            displayName: dbModel.displayName,
+            originalName: dbModel.name,
+            translatedName: dbModel.displayName,
             description: dbModel.gradeDescription,
             colorHexString: dbModel.colorHexString,
             priority: Int(dbModel.priority),
