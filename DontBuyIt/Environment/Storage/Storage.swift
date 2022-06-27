@@ -10,6 +10,10 @@ import CoreData
 
 final class Storage: ObservableObject {
     
+    static var shared: Storage = Storage()
+    
+    private init() {}
+    
     private var cacheGrades: [GradeModel]?
     private var cacheBrands: [BrandModel]?
     private var cacheProducts: [ProductModel]?

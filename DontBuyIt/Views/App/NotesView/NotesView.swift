@@ -10,7 +10,6 @@ import SwiftUI
 struct NotesView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var storage: Storage
     @ObservedObject private var viewModel = NotesViewModel()
     @Binding var dismiss: Bool
     
@@ -40,9 +39,6 @@ struct NotesView: View {
             Spacer()
         }
         .background(.black.opacity(0.5))
-        .onAppear(perform: {
-            viewModel.prepareInfo(storage)
-        })
     }
     
     // MARK: - Views
@@ -97,6 +93,5 @@ struct NotesView: View {
 struct NotesView_Previews: PreviewProvider {
     static var previews: some View {
         NotesView(dismiss: .constant(false))
-            .environmentObject(Storage())
     }
 }

@@ -9,13 +9,9 @@ import SwiftUI
 
 @main
 struct DontBuyItApp: App {
-    
-    @ObservedObject private var storage = Storage()
-    
     var body: some Scene {
         WindowGroup {
             SplashView()
-                .environmentObject(storage)
         }
     }
 }

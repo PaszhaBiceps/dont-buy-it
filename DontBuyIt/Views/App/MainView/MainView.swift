@@ -10,7 +10,6 @@ import SwiftUI
 struct MainView: View {
     
     @Environment(\.colorScheme) var colorScheme
-    @EnvironmentObject var storage: Storage
     @ObservedObject private var viewModel = MainViewModel()
     private var isLeftDatasourceSelected: Binding<Bool> {
         Binding<Bool>(get: {
@@ -53,9 +52,6 @@ struct MainView: View {
             }
         }
         .navigationBarHidden(true)
-        .onAppear(perform: {
-            viewModel.prepareInfo(storage: storage)
-        })
         .sheet(isPresented: showBrandDetails) {
             if let brand = brandToShow {
                 BrandDetailsView(viewModel: .init(brand: brand))
@@ -151,6 +147,5 @@ struct MainView: View {
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
-            .environmentObject(Storage())
     }
 }

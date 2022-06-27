@@ -12,10 +12,7 @@ class NotesViewModel: ObservableObject {
     
     @Published var grades: [GradeModel] = []
     
-    init() {}
-    
-    // MARK: - Public
-    func prepareInfo(_ storage: Storage) {
-        grades = storage.getGrades().sorted(by: { ($0.priority ?? 0) < ($1.priority ?? 0) })
+    init() {
+        grades = Storage.shared.getGrades().sorted(by: { ($0.priority ?? 0) < ($1.priority ?? 0) })
     }
 }

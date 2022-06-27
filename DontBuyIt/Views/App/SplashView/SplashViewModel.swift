@@ -22,7 +22,9 @@ class SplashViewModel: ObservableObject {
     init() {}
     
     // MARK: - Public
-    func fetchDataIfNeeded(_ storage: Storage) {
+    func fetchDataIfNeeded() {
+        let storage = Storage.shared
+        
         loadingState = .loading
         if !storage.getBrands().isEmpty,
            !storage.getGrades().isEmpty,
