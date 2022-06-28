@@ -23,7 +23,8 @@ struct BrandModel: APIModel,
     let logoURL: String?
     let grade: String?
     let linkToAnnouncement: String?
-    let products: [ProductModel]
+    var products: [ProductModel]
+    var gradeModel: GradeModel?
     
     var id: Int {
         return (name ?? "").hashValue
@@ -73,9 +74,18 @@ struct BrandModel: APIModel,
         case products
     }
     
+    // MARK: - Public
+    mutating func updateGradeModel(_ model: GradeModel) {
+        gradeModel = model
+    }
+    
+    mutating func updateProducts(_ list: [ProductModel]) {
+        products = list
+    }
+    
     // MARK: - Convenience
     static func stub() -> BrandModel {
-        return BrandModel(
+        var stub = BrandModel(
             translatedCountry: "Карїна",
             translatedAction: "Дія",
             translatedGicsIndustrySector: "Сектор",
@@ -90,5 +100,7 @@ struct BrandModel: APIModel,
             linkToAnnouncement: nil,
             products: [ProductModel.stub()]
         )
+        stub.updateGradeModel(GradeModel.unknown())
+        return stub
     }
 }

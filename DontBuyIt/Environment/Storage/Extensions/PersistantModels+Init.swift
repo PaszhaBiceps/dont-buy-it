@@ -54,5 +54,8 @@ extension Brand {
         translatedCountry = response.translatedCountry
         translatedGicsIndusctrySector = response.translatedGicsIndustrySector
         translatedMagnitudeOfOccupantOperations = response.translatedMagnitudeOfOccupantOperations
+        
+        gradeModel = Grade(response: response.gradeModel ?? GradeModel.unknown(),
+                           context: context)
     }
 }

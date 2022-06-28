@@ -52,4 +52,13 @@ struct GradeModel: APIModel,
                           availableForPurchase: true)
         
     }
+    
+    static func unknown() -> Self {
+        return GradeModel(originalName: "Unknown",
+                          translatedName: "Невідомо",
+                          description: "Ще немає інформації стосовно цього бренду",
+                          colorHexString: "#586261",
+                          priority: 0,
+                          availableForPurchase: false)
+    }
 }

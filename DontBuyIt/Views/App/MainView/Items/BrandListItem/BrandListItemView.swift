@@ -114,9 +114,14 @@ struct BrandListItemView: View {
                 }
             }.frame(height: 18)
             
-            InfoLabel(color: .green,
-                      text: "Text")
+            infoView()
         }
+    }
+    
+    private func infoView() -> some View {
+        let grade = viewModel.brand.gradeModel ?? GradeModel.stub()
+        return InfoLabel(color: grade.color ?? .clear,
+                         text: grade.name ?? "")
     }
 }
 

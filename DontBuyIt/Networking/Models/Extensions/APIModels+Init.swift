@@ -51,5 +51,10 @@ extension BrandModel {
             linkToAnnouncement: dbModel.linkToAnnouncement,
             products: products
         )
+        if let model = dbModel.gradeModel {
+            gradeModel = GradeModel(dbModel: model)
+        } else {
+            gradeModel = GradeModel.unknown()
+        }
     }
 }

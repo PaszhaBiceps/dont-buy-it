@@ -13,6 +13,7 @@
         <attribute name="translatedCountry" optional="YES" attributeType="String"/>
         <attribute name="translatedGicsIndusctrySector" optional="YES" attributeType="String"/>
         <attribute name="translatedMagnitudeOfOccupantOperations" optional="YES" attributeType="String"/>
+        <relationship name="gradeModel" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product"/>
     </entity>
     <entity name="Grade" representedClassName="Grade" syncable="YES" codeGenerationType="class">
@@ -29,8 +30,8 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="Brand" positionX="235.3448486328125" positionY="-13.73794555664062" width="128" height="239"/>
         <element name="Grade" positionX="-170.7047729492188" positionY="-110.5332946777344" width="128" height="14"/>
-        <element name="Brand" positionX="235.3448486328125" positionY="-13.73794555664062" width="128" height="14"/>
         <element name="Product" positionX="-36" positionY="9" width="128" height="14"/>
     </elements>
 </model>

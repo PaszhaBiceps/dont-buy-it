@@ -22,7 +22,7 @@ struct API: NetworkingService {
     
     private init() {
         network = NetworkingClient(baseURL: Constants.baseURL)
-        network.logLevel = .debug
+        network.logLevel = .info
     }
     
     func fetchGrades() async throws -> [GradeModel] {
