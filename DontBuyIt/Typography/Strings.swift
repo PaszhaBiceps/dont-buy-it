@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum ViewStrings: String, Localizable {
+enum ViewStrings: String,
+                  Localizable {
     case navigationHeaderPartOne = "navigation_header_part_one"
     case navigationHeaderPartTwo = "navigation_header_part_two"
     
@@ -28,6 +29,7 @@ enum ViewStrings: String, Localizable {
     case closeButtonTitle = "close_button_title"
     
     case productListTitle = "product_list_title"
+    case noProductsPlaceholder = "no_products_placeholder"
     
     case loadingResourceMessage = "loading_resources_message"
 }

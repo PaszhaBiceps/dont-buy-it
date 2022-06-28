@@ -48,7 +48,7 @@ struct GradeModel: APIModel,
                           translatedName: "Оцінка",
                           description: "Stub description",
                           colorHexString: "#D8319C",
-                          priority: 0,
+                          priority: 99,
                           availableForPurchase: true)
         
     }
@@ -58,7 +58,7 @@ struct GradeModel: APIModel,
                           translatedName: "Невідомо",
                           description: "Ще немає інформації стосовно цього бренду",
                           colorHexString: "#586261",
-                          priority: 0,
+                          priority: 99,
                           availableForPurchase: false)
     }
 }

@@ -130,9 +130,9 @@ struct BrandListItemView: View {
 struct BrandListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
-            BrandListItemView(viewModel: .init(brand: BrandModel.stub(),
-                                               products: []))
-                .padding(.horizontal, 26)
+            BrandListItemView(
+                viewModel: .init(brand: BrandModel.stub())
+            ).padding(.horizontal, 26)
             
             Spacer()
         }

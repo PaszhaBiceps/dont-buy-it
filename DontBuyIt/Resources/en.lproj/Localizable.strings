@@ -30,6 +30,7 @@
 
 // Brand Details View
 "product_list_title" = "Products";
+"no_products_placeholder" = "No products available yet";
 
 // Splash View
 "loading_resources_message" = "Loading resources";

@@ -26,7 +26,7 @@ struct MainView: View {
         })
     }
     @State private var showNotes: Bool = false
-    @State private var brandToShow: String?
+    @State private var brandToShow: BrandModel?
     private var showBrandDetails: Binding<Bool> {
         Binding<Bool>(get: {
             return brandToShow != nil
@@ -131,12 +131,11 @@ struct MainView: View {
             LazyVStack(spacing: 22) {
                 ForEach(viewModel.brands, id: \.id) { brand in
                     BrandListItemView(
-                        viewModel: .init(brand: brand,
-                                         products: [ProductModel.stub()])
+                        viewModel: .init(brand: brand)
                     )
                     .padding(.horizontal, 16)
                     .onTapGesture {
-                        brandToShow = "Brand \(brand)"
+                        brandToShow = brand
                     }
                 }
             }.padding(.top, 5)

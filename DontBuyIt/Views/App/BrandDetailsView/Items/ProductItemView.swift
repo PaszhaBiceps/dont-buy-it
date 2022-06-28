@@ -9,22 +9,33 @@ import SwiftUI
 
 struct ProductItemView: View {
     
-    @State var imageUrl: String
-    @State var name: String
+    @State var product: ProductModel
     
     var body: some View {
         HStack {
-            // FIXME: Add loading from URL when available
-            Image(.placeholder)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 45, height: 45)
-                .clipShape(
-                    Circle()
-                )
-                .padding(.leading, 16)
+            AsyncImage(url: URL(string: product.imageUrl ?? ""))
+            { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 45, height: 45)
+                    .clipShape(
+                        Circle()
+                    )
+                    .padding(.leading, 16)
+            } placeholder: {
+                Image(.placeholder)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 45, height: 45)
+                    .clipShape(
+                        Circle()
+                    )
+                    .padding(.leading, 16)
+            }
+
             
-            Text(name)
+            Text(product.name ?? "")
                 .font(.robotoMedium(16))
                 .padding(.leading, 8)
             
@@ -35,7 +46,6 @@ struct ProductItemView: View {
 
 struct ProductItemView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductItemView(imageUrl: "",
-                        name: "Brand Name")
+        ProductItemView(product: ProductModel.stub())
     }
 }

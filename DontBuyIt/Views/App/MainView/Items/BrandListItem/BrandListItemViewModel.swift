@@ -26,16 +26,15 @@ class BrandListItemViewModel: ObservableObject {
     @Published var brand: BrandModel
     @Published var products: [BrandProduct]
     
-    init(brand: BrandModel,
-         products: [ProductModel]) {
+    init(brand: BrandModel) {
         self.brand = brand
-        if products.count > 3 {
-            self.products = products.prefix(2).map({ .product($0) })
+        if brand.products.count > 3 {
+            self.products = brand.products.prefix(2).map({ .product($0) })
             self.products.append(
-                .additionalCount(products.count - 2)
+                .additionalCount(brand.products.count - 2)
             )
         } else {
-            self.products = products.map({ .product($0) })
+            self.products = brand.products.map({ .product($0) })
         }
     }
 }
