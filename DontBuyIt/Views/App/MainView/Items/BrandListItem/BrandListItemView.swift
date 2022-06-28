@@ -73,53 +73,55 @@ struct BrandListItemView: View {
                     colorScheme == .dark ? .white : .appDarkGray
                 )
             
-            LazyHStack(spacing: 4) {
-                ForEach(viewModel.products, id: \.id) { item in
-                    switch item {
-                    case .product(let model):
-                        AsyncImage(url: URL(string: model.imageUrl ?? ""))
-                        { image in
-                            image
-                                .resizable()
+            if !viewModel.products.isEmpty {
+                LazyHStack(spacing: 4) {
+                    ForEach(viewModel.products, id: \.id) { item in
+                        switch item {
+                        case .product(let model):
+                            AsyncImage(url: URL(string: model.imageUrl ?? ""))
+                            { image in
+                                image
+                                    .resizable()
+                                    .frame(width: 18,
+                                           height: 18)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(
+                                        Circle()
+                                    )
+                            } placeholder: {
+                                Image(.placeholderSmall)
+                                    .resizable()
+                                    .frame(width: 18,
+                                           height: 18)
+                                    .aspectRatio(contentMode: .fill)
+                                    .clipShape(
+                                        Circle()
+                                    )
+                            }
+
+                        case .additionalCount(let count):
+                            Text("+\(count > 99 ? 99 : count)")
                                 .frame(width: 18,
                                        height: 18)
-                                .aspectRatio(contentMode: .fill)
-                                .clipShape(
-                                    Circle()
+                                .font(.robotoBlack(8))
+                                .foregroundColor(.white)
+                                .background(
+                                    Color.appGray
                                 )
-                        } placeholder: {
-                            Image(.placeholderSmall)
-                                .resizable()
-                                .frame(width: 18,
-                                       height: 18)
-                                .aspectRatio(contentMode: .fill)
                                 .clipShape(
                                     Circle()
                                 )
                         }
-
-                    case .additionalCount(let count):
-                        Text("+\(count > 99 ? 99 : count)")
-                            .frame(width: 18,
-                                   height: 18)
-                            .font(.robotoBlack(8))
-                            .foregroundColor(.white)
-                            .background(
-                                Color.appGray
-                            )
-                            .clipShape(
-                                Circle()
-                            )
                     }
-                }
-            }.frame(height: 18)
+                }.frame(height: 18)
+            }
             
             infoView()
         }
     }
     
     private func infoView() -> some View {
-        let grade = viewModel.brand.gradeModel ?? GradeModel.stub()
+        let grade = viewModel.brand.gradeModel ?? GradeModel.unknown()
         return InfoLabel(color: grade.color ?? .clear,
                          text: grade.name ?? "")
     }
@@ -129,7 +131,7 @@ struct BrandListItemView_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             BrandListItemView(viewModel: .init(brand: BrandModel.stub(),
-                                               products: [ProductModel.stub()]))
+                                               products: []))
                 .padding(.horizontal, 26)
             
             Spacer()

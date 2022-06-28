@@ -59,8 +59,6 @@ class SplashViewModel: ObservableObject {
                brands: [BrandModel],
                products: [ProductModel],
                storage: Storage) {
-        storage.store(grades: grades)
-        storage.store(brands: brands)
-        storage.store(products: products)
+        storage.store(data: (brands, products, grades))
     }
 }

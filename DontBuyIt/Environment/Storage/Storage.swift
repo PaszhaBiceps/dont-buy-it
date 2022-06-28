@@ -119,16 +119,14 @@ final class Storage: ObservableObject {
     }
     
     func store(data: StorageData) {
-        /**
-         1. Add proper grade to a brand
-         2. Add products for a grade
-         3. Store everything
-         */
-        for var brand in data.brands {
-            brand.gradeModel = data.grades.first(where: { $0.name?.lowercased() == brand.grade }) ?? GradeModel.unknown()
+        var brandsToStore = [BrandModel]()
+        data.brands.forEach({
+            var brand = $0
+            brand.gradeModel = data.grades.first(where: { $0.originalName?.lowercased() == brand.grade?.lowercased() }) ?? GradeModel.unknown()
             brand.products = data.products.filter({ $0.brandName?.lowercased() == brand.name?.lowercased() })
-        }
-        store(brands: data.brands)
+            brandsToStore.append(brand)
+        })
+        store(brands: brandsToStore)
         store(products: data.products)
         store(grades: data.grades)
     }
