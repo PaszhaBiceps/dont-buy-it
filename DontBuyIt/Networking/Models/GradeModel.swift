@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 struct GradeModel: APIModel,
-                   Codable {
+                   Codable,
+                   Comparable {
+    
     let originalName: String?
     let translatedName: String?
     let description: String?
@@ -60,5 +62,10 @@ struct GradeModel: APIModel,
                           colorHexString: "#586261",
                           priority: 99,
                           availableForPurchase: false)
+    }
+    
+    // MARK: - Comparable
+    static func < (lhs: GradeModel, rhs: GradeModel) -> Bool {
+        (lhs.priority ?? 0) < (rhs.priority ?? 0)
     }
 }

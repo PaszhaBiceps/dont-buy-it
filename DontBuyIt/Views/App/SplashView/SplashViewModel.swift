@@ -46,7 +46,7 @@ class SplashViewModel: ObservableObject {
                 await MainActor.run(body: {[weak self] in
                     self?.loadingState = .finished(error: nil)
                 })
-            } catch {
+            } catch let error {
                 await MainActor.run(body: {[weak self] in
                     self?.loadingState = .finished(error: error.localizedDescription)
                 })

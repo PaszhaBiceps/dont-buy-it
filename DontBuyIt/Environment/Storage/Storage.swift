@@ -27,10 +27,9 @@ final class Storage: ObservableObject {
             guard let self = self else { return }
             self.deleteGrades(context: context,
                               save: false)
-            grades.forEach({
-                _ = Grade(response: $0,
-                          context: context)
-            })
+            
+            _ = GradesList(grades: grades,
+                           context: context)
             
             try? context.save()
             DispatchQueue.main.async {
@@ -39,15 +38,25 @@ final class Storage: ObservableObject {
         }
     }
     
+    /**
+     Returns a list of grades sorter by `priority` paremter
+     - Returns: an array of `GradeModel` objects
+     */
+    
     func getGrades() -> [GradeModel] {
         if let cacheGrades = cacheGrades {
             return cacheGrades
         }
         let context = PersistenceController.viewContext
-        let request: NSFetchRequest<Grade> = Grade.fetchRequest()
+        let request: NSFetchRequest<GradesList> = GradesList.fetchRequest()
         return context.performAndWait {
-            let list = try? request.execute().map({ GradeModel(dbModel: $0) })
-            cacheGrades = list?.sorted(by: { ($0.priority ?? 0) < ($1.priority ?? 0) })
+            guard let dbModel = try? request.execute().first else {
+                return []
+            }
+            let list = dbModel.grades?.map({
+                GradeModel(dbModel: $0 as! Grade)
+            }).sorted(by: { $0 < $1 })
+            cacheGrades = list
             return list ?? []
         }
     }
@@ -110,9 +119,14 @@ final class Storage: ObservableObject {
             return cacheProducts
         }
         let context = PersistenceController.viewContext
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        let request: NSFetchRequest<ProductsList> = ProductsList.fetchRequest()
         return context.performAndWait {
-            let list = try? request.execute().map({ ProductModel(dbModel: $0) })
+            guard let dbModel = try? request.execute().first else {
+                return []
+            }
+            let list = dbModel.products?.map({
+                ProductModel(dbModel: $0 as! Product)
+            })
             cacheProducts = list
             return list ?? []
         }
@@ -122,19 +136,54 @@ final class Storage: ObservableObject {
         var brandsToStore = [BrandModel]()
         data.brands.forEach({
             var brand = $0
-            brand.gradeModel = data.grades.first(where: { $0.originalName?.lowercased() == brand.grade?.lowercased() }) ?? GradeModel.unknown()
-            brand.products = data.products.filter({ $0.brandName?.lowercased() == brand.name?.lowercased() })
+            brand.gradeModel = data.grades.first(where: {
+                $0.originalName?.lowercased() == brand.grade?.lowercased()
+            }) ?? GradeModel.unknown()
+            brand.products = data.products.filter({
+                $0.brandName?.lowercased() == brand.name?.lowercased()
+            })
             brandsToStore.append(brand)
         })
-        store(brands: brandsToStore)
-        store(products: data.products)
-        store(grades: data.grades)
+        
+        let context = PersistenceController.newBackgroundContext()
+        
+        deleteGrades(context: context,
+                     save: false)
+        deleteBrands(context: context,
+                     save: false)
+        deleteProducts(context: context,
+                       save: false)
+        
+        cacheGrades = data.grades
+        cacheBrands = brandsToStore
+        cacheProducts = data.products
+        
+        context.perform {
+            // GradesList
+            _ = GradesList(grades: data.grades,
+                           context: context)
+            
+            // Brands
+            brandsToStore.forEach({
+                _ = Brand(response: $0,
+                          context: context)
+            })
+            
+            // Products
+            _ = ProductsList(products: data.products,
+                             context: context)
+            
+            try? context.save()
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+            }
+        }
     }
     
     // MARK: - Private
     private func deleteGrades(context: NSManagedObjectContext,
                               save: Bool) {
-        let request: NSFetchRequest<Grade> = Grade.fetchRequest()
+        let request: NSFetchRequest<GradesList> = GradesList.fetchRequest()
         let objects = try? context.fetch(request)
         objects?.forEach({
             context.delete($0)

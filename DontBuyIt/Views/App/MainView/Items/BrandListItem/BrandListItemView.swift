@@ -15,6 +15,9 @@ struct BrandListItemView: View {
     private var backgroundColor: Color {
         colorScheme == .dark ? Color.appDarkGray : .white
     }
+    private var placeholderBackgroundColor: Color {
+        colorScheme == .dark ? Color("#4E5165") : Color("#C8CDD1")
+    }
     
     var body: some View {
         HStack {
@@ -43,6 +46,9 @@ struct BrandListItemView: View {
                 .frame(width: 76,
                        height: 76)
                 .aspectRatio(contentMode: .fill)
+                .background(
+                    backgroundColor
+                )
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8,
                                      style: .continuous)
@@ -55,6 +61,9 @@ struct BrandListItemView: View {
                 .frame(width: 76,
                        height: 76)
                 .aspectRatio(contentMode: .fill)
+                .background(
+                    backgroundColor
+                )
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8,
                                      style: .continuous)
@@ -136,5 +145,6 @@ struct BrandListItemView_Previews: PreviewProvider {
             
             Spacer()
         }
+        .preferredColorScheme(.dark)
     }
 }

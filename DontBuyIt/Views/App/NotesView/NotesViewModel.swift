@@ -13,6 +13,6 @@ class NotesViewModel: ObservableObject {
     @Published var grades: [GradeModel] = []
     
     init() {
-        grades = Storage.shared.getGrades().sorted(by: { ($0.priority ?? 0) < ($1.priority ?? 0) })
+        grades = Storage.shared.getGrades()
     }
 }

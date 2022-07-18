@@ -22,7 +22,8 @@ extension Grade {
 }
 
 extension Product {
-    convenience init(response: ProductModel, context: NSManagedObjectContext) {
+    convenience init(response: ProductModel,
+                     context: NSManagedObjectContext) {
         self.init(entity: Product.entity(),
                   insertInto: context)
         brandName = response.brandName
@@ -57,5 +58,33 @@ extension Brand {
         
         gradeModel = Grade(response: response.gradeModel ?? GradeModel.unknown(),
                            context: context)
+    }
+}
+
+extension GradesList {
+    convenience init(grades: [GradeModel],
+                     context: NSManagedObjectContext) {
+        self.init(entity: GradesList.entity(),
+                  insertInto: context)
+        grades.forEach({
+            addToGrades(
+                Grade(response: $0,
+                      context: context)
+            )
+        })
+    }
+}
+
+extension ProductsList {
+    convenience init(products: [ProductModel],
+                     context: NSManagedObjectContext) {
+        self.init(entity: ProductsList.entity(),
+                  insertInto: context)
+        products.forEach({
+            addToProducts(
+                Product(response: $0,
+                        context: context)
+            )
+        })
     }
 }
