@@ -89,7 +89,7 @@ struct MainView: View {
                       text: ViewStrings.mainScreenLeftButtonTitle.localized.uppercased(),
                       verticalPadding: 12,
                       action: {
-                viewModel.activeDataSource = .left
+                viewModel.changeActiveDataSource(to: .left)
             })
             
             AppButton(isActive: isStayedDatasourceSelected,
@@ -98,33 +98,34 @@ struct MainView: View {
                       text: ViewStrings.mainScreenRightButtonTitle.localized.uppercased(),
                       verticalPadding: 12,
                       action: {
-                viewModel.activeDataSource = .stayed
+                viewModel.changeActiveDataSource(to: .stayed)
             })
         }
     }
     
-    private func searchView() -> some View {
-        ScrollView(.horizontal,
-                   showsIndicators: false) {
-            LazyHStack(spacing: 10) {
-                Section {
-                    ForEach(0..<10) { index in
-                        AppButton(isActive: .constant(false),
-                                  activeColor: .white,
-                                  text: "Button \(index)",
-                                  verticalPadding: 7,
-                                  horizontalPadding: 12) {
-                            
-                        }
-                    }
-                } header: {
-                    SearchButton {
-                        
-                    }
-                }
-            }.padding(.horizontal, 16)
-        }.frame(height: 60)
-    }
+    // Commented till needed
+//    private func searchView() -> some View {
+//        ScrollView(.horizontal,
+//                   showsIndicators: false) {
+//            LazyHStack(spacing: 10) {
+//                Section {
+//                    ForEach(0..<10) { index in
+//                        AppButton(isActive: .constant(false),
+//                                  activeColor: .white,
+//                                  text: "Button \(index)",
+//                                  verticalPadding: 7,
+//                                  horizontalPadding: 12) {
+//
+//                        }
+//                    }
+//                } header: {
+//                    SearchButton {
+//
+//                    }
+//                }
+//            }.padding(.horizontal, 16)
+//        }.frame(height: 60)
+//    }
     
     private func brandsList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
