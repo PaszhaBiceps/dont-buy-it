@@ -180,6 +180,14 @@ final class Storage: ObservableObject {
         }
     }
     
+    func hasAllDataLoaded() -> Bool {
+        let grades = getGrades()
+        let brands = getBrands()
+        let products = getProducts()
+        
+        return !grades.isEmpty && !brands.isEmpty && !products.isEmpty
+    }
+    
     // MARK: - Private
     private func deleteGrades(context: NSManagedObjectContext,
                               save: Bool) {

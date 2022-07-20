@@ -14,7 +14,8 @@ class SplashViewModel: ObservableObject {
     enum State: Equatable {
         case idle
         case loading
-        case finished(error: String?)
+        case finished
+        case error(message: String)
     }
     
     @Published var loadingState: State = .idle
@@ -26,29 +27,27 @@ class SplashViewModel: ObservableObject {
         let storage = Storage.shared
         
         loadingState = .loading
-        if !storage.getBrands().isEmpty,
-           !storage.getGrades().isEmpty,
-           !storage.getProducts().isEmpty {
-            loadingState = .finished(error: nil)
+        if storage.hasAllDataLoaded() {
+            loadingState = .finished
             return
         }
-        
+                
         Task {
             do {
                 async let grades = try API.shared.fetchGrades()
                 async let brands = try API.shared.fetchBrands()
                 async let products = try API.shared.fetchProducts()
-                
+
                 try await store(grades: grades,
                                 brands: brands,
                                 products: products,
                                 storage: storage)
                 await MainActor.run(body: {[weak self] in
-                    self?.loadingState = .finished(error: nil)
+                    self?.loadingState = .finished
                 })
             } catch let error {
                 await MainActor.run(body: {[weak self] in
-                    self?.loadingState = .finished(error: error.localizedDescription)
+                    self?.loadingState = .error(message: error.localizedDescription)
                 })
             }
         }

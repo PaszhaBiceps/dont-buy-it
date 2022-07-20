@@ -34,3 +34,5 @@
 
 // Splash View
 "loading_resources_message" = "Loading resources";
+"failed_to_load_resources_message" = "Failed to load resources";
+"retry_action_title" = "Retry";

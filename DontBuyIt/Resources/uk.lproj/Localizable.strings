@@ -34,3 +34,5 @@
 
 // Splash View
 "loading_resources_message" = "Завантажуємо ресурси";
+"failed_to_load_resources_message" = "Не вдалося завантажити ресурси";
+"retry_action_title" = "Спробувати знову";

@@ -13,21 +13,29 @@ struct SplashView: View {
     @ObservedObject private var viewModel = SplashViewModel()
     private var navigationBinding: Binding<Bool> {
         Binding<Bool>(get: {
+            return viewModel.loadingState == .finished
+        }, set: { _ in })
+    }
+    private var errorBinding: Binding<Bool> {
+        Binding<Bool>(get: {
             switch viewModel.loadingState {
-            case .finished(let error):
-                if error != nil {
-                    return false // FIXME: Think about proper error handling or some means to retry
-                } else {
-                    return true
-                }
+            case .error:
+                return true
             default:
                 return false
             }
         }, set: { _ in })
     }
-    
     private var isLoading: Bool {
         viewModel.loadingState == .loading
+    }
+    private var hasFailedToFetchData: Bool {
+        switch viewModel.loadingState {
+        case .error:
+            return true
+        default:
+            return false
+        }
     }
     
     var body: some View {
@@ -35,9 +43,15 @@ struct SplashView: View {
             ZStack {
                 Image(.logoSplash)
                 
-                if isLoading {
+                switch viewModel.loadingState {
+                case .loading:
                     loaderView()
                         .padding(.bottom, 50)
+                case .error:
+                    retryView()
+                        .padding(.bottom, 50)
+                default:
+                    EmptyView()
                 }
                 
                 NavigationLink("",
@@ -50,6 +64,21 @@ struct SplashView: View {
         .navigationBarHidden(true)
         .onAppear {
             viewModel.fetchDataIfNeeded()
+        }
+        .alert("Errror",
+               isPresented: errorBinding) {
+            Button(action: {
+                
+            }, label: {
+                Text("OK")
+            })
+        } message: {
+            switch viewModel.loadingState {
+            case .error(let message):
+                Text(message)
+            default:
+                Text("An error occurred")
+            }
         }
     }
     
@@ -66,6 +95,32 @@ struct SplashView: View {
                 ActivityIndicator(isAnimating: .constant(true),
                                   style: .medium)
             }
+        }
+    }
+    
+    private func retryView() -> some View {
+        VStack {
+            Spacer()
+            
+            VStack {
+                Text(
+                    ViewStrings
+                        .failedToLoadReourcesMessage
+                        .localized
+                )
+                
+                Button {
+                    viewModel.fetchDataIfNeeded()
+                } label: {
+                    Text(
+                        ViewStrings
+                            .retryActionTitle
+                            .localized
+                    ).foregroundColor(.blue)
+                }.padding(.top, 3)
+
+            }
+            .padding(.bottom)
         }
     }
 }

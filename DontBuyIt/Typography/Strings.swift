@@ -32,6 +32,8 @@ enum ViewStrings: String,
     case noProductsPlaceholder = "no_products_placeholder"
     
     case loadingResourceMessage = "loading_resources_message"
+    case failedToLoadReourcesMessage = "failed_to_load_resources_message"
+    case retryActionTitle = "retry_action_title"
 }
 
 struct Constants {
