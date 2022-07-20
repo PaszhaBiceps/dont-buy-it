@@ -24,7 +24,7 @@ struct ProductItemView: View {
                     )
                     .padding(.leading, 16)
             } placeholder: {
-                Image(.placeholder)
+                Image(.placeholderSmall)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 45, height: 45)

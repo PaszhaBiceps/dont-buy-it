@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BrandDetailsViewModel: ObservableObject {
+final class BrandDetailsViewModel: ObservableObject {
     
     @Published var brand: BrandModel
     

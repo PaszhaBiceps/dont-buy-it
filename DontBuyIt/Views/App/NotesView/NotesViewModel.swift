@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class NotesViewModel: ObservableObject {
+final class NotesViewModel: ObservableObject {
     
     @Published var grades: [GradeModel] = []
     

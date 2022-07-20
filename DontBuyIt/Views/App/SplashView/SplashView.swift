@@ -88,9 +88,15 @@ struct SplashView: View {
             Spacer()
             
             HStack {
-                Text(ViewStrings.loadingResourceMessage.localized)
-                    .font(.robotoRegular(16))
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                Text(
+                    ViewStrings
+                        .loadingResourceMessage
+                        .localized
+                )
+                .font(.robotoRegular(16))
+                .foregroundColor(
+                    colorScheme == .dark ? .white : .black
+                )
                 
                 ActivityIndicator(isAnimating: .constant(true),
                                   style: .medium)

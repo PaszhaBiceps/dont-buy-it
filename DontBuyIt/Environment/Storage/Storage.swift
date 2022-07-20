@@ -8,7 +8,9 @@
 import Foundation
 import CoreData
 
-typealias StorageData = (brands: [BrandModel], products: [ProductModel], grades: [GradeModel])
+typealias StorageData = (brands: [BrandModel],
+                         products: [ProductModel],
+                         grades: [GradeModel])
 
 final class Storage: ObservableObject {
     

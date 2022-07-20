@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class MainViewModel: ObservableObject {
+final class MainViewModel: ObservableObject {
     
     enum DatasourceType {
         case left

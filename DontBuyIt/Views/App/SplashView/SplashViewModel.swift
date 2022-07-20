@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 @MainActor
-class SplashViewModel: ObservableObject {
+final class SplashViewModel: ObservableObject {
     
     enum State: Equatable {
         case idle
