@@ -66,11 +66,29 @@ struct MainView: View {
     private func headerView() -> some View {
         ZStack {
             HStack {
+                Button {
+                    viewModel.updateAppData()
+                } label: {
+                    if viewModel.loadingState == .loading {
+                        ActivityIndicator(isAnimating: .constant(true),
+                                          style: .medium)
+                    } else {
+                        Image(systemName: "arrow.clockwise")
+                            .foregroundColor(.black)
+                    }
+                }
+                .padding(.leading, 16)
+
+                Spacer()
+            }
+            
+            HStack {
                 NavigationHeaderView()
             }
             
             HStack {
                 Spacer()
+                
                 Button {
                     showNotes.toggle()
                 } label: {
@@ -102,30 +120,6 @@ struct MainView: View {
             })
         }
     }
-    
-    // Commented till needed
-//    private func searchView() -> some View {
-//        ScrollView(.horizontal,
-//                   showsIndicators: false) {
-//            LazyHStack(spacing: 10) {
-//                Section {
-//                    ForEach(0..<10) { index in
-//                        AppButton(isActive: .constant(false),
-//                                  activeColor: .white,
-//                                  text: "Button \(index)",
-//                                  verticalPadding: 7,
-//                                  horizontalPadding: 12) {
-//
-//                        }
-//                    }
-//                } header: {
-//                    SearchButton {
-//
-//                    }
-//                }
-//            }.padding(.horizontal, 16)
-//        }.frame(height: 60)
-//    }
     
     private func brandsList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {

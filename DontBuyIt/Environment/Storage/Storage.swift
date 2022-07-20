@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-typealias StorageData = (brands: [BrandModel],
+typealias AppData = (brands: [BrandModel],
                          products: [ProductModel],
                          grades: [GradeModel])
 
@@ -104,10 +104,9 @@ final class Storage: ObservableObject {
             guard let self = self else { return }
             self.deleteProducts(context: context,
                                 save: false)
-            products.forEach({
-                _ = Product(response: $0,
-                            context: context)
-            })
+            
+            _ = ProductsList(products: products,
+                             context: context)
             
             try? context.save()
             DispatchQueue.main.async {
@@ -134,7 +133,7 @@ final class Storage: ObservableObject {
         }
     }
     
-    func store(data: StorageData) {
+    func store(data: AppData) {
         var brandsToStore = [BrandModel]()
         data.brands.forEach({
             var brand = $0

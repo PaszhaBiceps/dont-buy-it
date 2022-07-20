@@ -37,4 +37,12 @@ struct API: NetworkingService {
     func fetchProducts() async throws -> [ProductModel] {
         try await get(Constants.Paths.products.rawValue)
     }
+    
+    func fetchData() async throws -> AppData {
+        let brands = try await fetchBrands()
+        let products = try await fetchProducts()
+        let grades = try await fetchGrades()
+        
+        return (brands, products, grades)
+    }
 }
