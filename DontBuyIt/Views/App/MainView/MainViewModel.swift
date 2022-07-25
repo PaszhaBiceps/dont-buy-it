@@ -34,6 +34,7 @@ final class MainViewModel: ObservableObject {
     @Published var loadingState: State = .idle
     @Published var activeDataSource: DatasourceType = .left
     @Published var brands: [BrandModel] = []
+    @Published var searchText: String = ""
     
     private var allBrands: [BrandModel] = []
     

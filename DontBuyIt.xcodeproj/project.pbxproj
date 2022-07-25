@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181E82AD28880F8A009AA33B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E82AC28880F8A009AA33B /* SearchView.swift */; };
 		1828179C2868D9D4009E3524 /* DontBuyIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1828179A2868D9D4009E3524 /* DontBuyIt.xcdatamodeld */; };
 		1828179F2869ACE1009E3524 /* PersistantModels+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1828179E2869ACE1009E3524 /* PersistantModels+Init.swift */; };
 		182817A32869B4AB009E3524 /* APIModels+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182817A22869B4AB009E3524 /* APIModels+Init.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		181E82AC28880F8A009AA33B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		1828179B2868D9D4009E3524 /* DontBuyIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DontBuyIt.xcdatamodel; sourceTree = "<group>"; };
 		1828179E2869ACE1009E3524 /* PersistantModels+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PersistantModels+Init.swift"; sourceTree = "<group>"; };
 		182817A22869B4AB009E3524 /* APIModels+Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIModels+Init.swift"; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 				18F43765283BE9F3002A027B /* SearchButton.swift */,
 				18F43767283BF4A7002A027B /* InfoLabel.swift */,
 				1890243128475831007D16ED /* LoadingView.swift */,
+				181E82AC28880F8A009AA33B /* SearchView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				18D8BEBF284F4C6D0031A6AB /* SplashViewModel.swift in Sources */,
 				189CFC4C2848F42E00AA80E0 /* BrandModel.swift in Sources */,
 				18AC68B1283ACF6C00AC1B95 /* Font+Custom.swift in Sources */,
+				181E82AD28880F8A009AA33B /* SearchView.swift in Sources */,
 				18D8BEB3284F3B190031A6AB /* Color+Extensions.swift in Sources */,
 				1890243228475831007D16ED /* LoadingView.swift in Sources */,
 				189CFC482848F28D00AA80E0 /* GradeModel.swift in Sources */,

@@ -44,6 +44,13 @@ struct MainView: View {
                     .padding(.top, 10)
                     .padding(.horizontal, 16)
                 
+                SearchView(
+                    placeholder: "Enter brand name here...",
+                    text: $viewModel.searchText
+                )
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                
                 brandsList()
             }
             
@@ -124,7 +131,12 @@ struct MainView: View {
     private func brandsList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(spacing: 22) {
-                ForEach(viewModel.brands, id: \.id) { brand in
+                let list = viewModel.brands.filter({
+                    guard !viewModel.searchText.isEmpty else {
+                        return true
+                    }
+                    return ($0.name?.lowercased())?.contains(viewModel.searchText.lowercased()) ?? true })
+                ForEach(list, id: \.id) { brand in
                     BrandListItemView(
                         viewModel: .init(brand: brand)
                     )

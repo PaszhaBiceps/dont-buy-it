@@ -216,7 +216,7 @@ final class Storage: ObservableObject {
     
     private func deleteProducts(context: NSManagedObjectContext,
                                 save: Bool) {
-        let request: NSFetchRequest<Product> = Product.fetchRequest()
+        let request: NSFetchRequest<ProductsList> = ProductsList.fetchRequest()
         let objects = try? context.fetch(request)
         objects?.forEach({
             context.delete($0)
