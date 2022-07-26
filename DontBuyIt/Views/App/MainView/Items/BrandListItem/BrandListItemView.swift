@@ -62,7 +62,7 @@ struct BrandListItemView: View {
                        height: 76)
                 .aspectRatio(contentMode: .fill)
                 .background(
-                    backgroundColor
+                    placeholderBackgroundColor
                 )
                 .clipShape(
                     RoundedRectangle(cornerRadius: 8,
