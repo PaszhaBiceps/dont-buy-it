@@ -45,7 +45,9 @@ struct MainView: View {
                     .padding(.horizontal, 16)
                 
                 SearchView(
-                    placeholder: "Enter brand name here...",
+                    placeholder: ViewStrings
+                        .mainScreenSearachBarPlaceholder
+                        .localized,
                     text: $viewModel.searchText
                 )
                 .padding(.horizontal, 16)

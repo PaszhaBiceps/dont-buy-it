@@ -13,6 +13,7 @@
 // Main View
 "main_screen_left_button_title" = "Left";
 "main_screen_right_button_title" = "Stayed";
+"main_screen_search_bar_placeholder" = "Enter brand name here...";
 
 // Notes view
 "notes_view_title" = "Notes";

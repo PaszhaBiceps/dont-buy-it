@@ -13,6 +13,7 @@
 // Main View
 "main_screen_left_button_title" = "Пішли";
 "main_screen_right_button_title" = "Залишилися";
+"main_screen_search_bar_placeholder" = "Введіть назву бренду тут...";
 
 // Notes view
 "notes_view_title" = "Помітки";

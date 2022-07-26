@@ -14,6 +14,7 @@ enum ViewStrings: String,
     
     case mainScreenLeftButtonTitle = "main_screen_left_button_title"
     case mainScreenRightButtonTitle = "main_screen_right_button_title"
+    case mainScreenSearachBarPlaceholder = "main_screen_search_bar_placeholder"
     
     case notesViewTitle = "notes_view_title"
     case temprorarySuspendedTitle = "temropary_suspended_title"
