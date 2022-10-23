@@ -38,7 +38,7 @@ enum ViewStrings: String,
 }
 
 struct Constants {
-    static let baseURL = "https://dont-buy-it-loader.herokuapp.com"
+    static let baseURL = "https://dont-buy-it-diploma.herokuapp.com"
     
     enum Paths: String {
         case grades = "/api/grades"
